@@ -8,5 +8,5 @@ build:
 	# xelatex -interaction=nonstopmode $(SITDHIBONG).tex
 	xelatex -interaction=nonstopmode $(SITDHIBONG).tex
 
-watch: *.tex *.bib
+watch: *.tex # *.bib
 	@pywatch "make -B build" $?
