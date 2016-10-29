@@ -14,11 +14,75 @@
 \defaultfontfeatures{Scale=1.23}
 \renewcommand{\baselinestretch}{1.2}
 
-\usepackage{liipsum}
+\usepackage{lipsum}
+
+\newcommand{\studentname}{นายสิทธิพงษ์ เหล่าโก้ก}
+\newcommand{\studentid}{5870972621}
+\newcommand{\curriculumn}{วิทยาศาสตร์มหาบัณฑิต}
+\newcommand{\major}{วิศวกรรมซอฟต์แวร์}
+\newcommand{\department}{วิศวกรรมคอมพิวเตอร์}
+\newcommand{\faculty}{วิศวกรรม}
+\newcommand{\address}{สถานที่ติดต่อ}
+\newcommand{\telephone}{0861-629-9905}
+\newcommand{\emailaddress}{sitdhibong.l@student.chula.ac.th}
+\newcommand{\advisor}{รศ.ดร.ธาราทิพย์ สุวรรณศาสตร์}
+\newcommand{\thakeywords}{}
+\newcommand{\engkeywords}{}
+\newcommand{\ThesisThaName}{การสร้างกรณีทดสอบด้วยการวิเคราะห์แผนภาพการเรียกหา}
+\newcommand{\ThesisEngName}{Test case generation with Static Call Graph analysis}
+
+\usepackage{titlesec}
+\titleformat{\section}{\bfseries}{\thesection}{1em}{}
 
 \begin{document}
-    {\Large โครงสร้างวิทยานิพนธ์}
+    \thispagestyle{empty}
+    \begin{center}
+        \bf
+        {\large โครงสร้างวิทยานิพนธ์ \\ (Thesis proposal)}
+    \end{center}
 
-    \lipsum[1-2]
+    \noindent
+    \begin{table}[ht!]
+        \centering
+        \label{tab:metadata}
+        \begin{tabular*}{\linewidth}{ll@{\extracolsep{\fill}}}
+            {\bf ชื่อเรื่อง (ภาษาไทย)}      & \ThesisThaName    \\
+            {\bf ชื่อเรื่อง (ภาษาอังกฤษ)}    & \ThesisEngName    \\ \\
+            {\bf เสนอโดย}               & \studentname      \\
+            {\bf รหัสนิสิต}                & \studentid        \\
+            {\bf หลักสูตร}                & \curriculumn      \\
+            {\bf สาขา}                  & \major            \\
+            {\bf ภาควิชา}                & \department       \\
+            {\bf คณะ}                   & \faculty          \\
+            {\bf สถานที่ติดต่อ}             & \address          \\
+            {\bf โทรศัพท์}                & \telephone        \\
+            {\bf อีเมล}                  & \emailaddress     \\
+            {\bf อาจารย์ที่ปรึกษา}          & \advisor          \\ \\
+            {\bf คำสำคัญภาษาไทย}         & \thakeywords      \\
+            {\bf คำสำคัญภาษาอังกฤษ}       & \engkeywords      \\
+        \end{tabular*}
+    \end{table}
+
+    \clearpage
+    \pagenumbering{arabic}
+    \begin{center}
+        {\bf\large โครงร่างวิทยานิพนธ์}
+    \end{center}
+
+    {\noindent\bf หัวข้อวิทยานิพนธ์}
+
+    \begin{table}[ht!]
+        \centering
+        \label{tab:thesisname}
+        \begin{tabular*}{\linewidth}{ll@{\extracolsep{\fill}}}
+            {\bf ภาษาอังกฤษ} & \ThesisEngName \\
+            {\bf ภาษาไทย}   & \ThesisThaName \\
+        \end{tabular*}
+    \end{table}
+
+    \section{ที่มาและความสำคัญ}
+    \include{introduction}
+
+
 \end{document}
 
