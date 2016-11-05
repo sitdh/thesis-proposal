@@ -10,5 +10,6 @@ reference:
 build: 
 	xelatex -interaction=nonstopmode $(SITDHIBONG).tex
 
-watch: *.tex # *.bib
+watch: *.tex *.bib
+	make build && make reference && make build
 	@pywatch "make -B build" $?
