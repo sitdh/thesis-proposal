@@ -1,0 +1,50 @@
+\newcommand{\makethesiscover}{ %
+
+    \thispagestyle{empty}
+    \begin{center}
+        \bf
+        {\large {\ThesisProposalTH} \\ ({\ThesisProposalEN})}
+    \end{center}
+
+    \noindent
+    \begin{table}[ht!]
+        \centering
+        \label{tab:metadata}
+        \begin{tabular*}{\linewidth}{ll@{\extracolsep{\fill}}}
+            {\bf ชื่อเรื่อง (ภาษาไทย)}      & \ifdefined\ThesisThaiName \ThesisThaiName\fi          \\
+            {\bf ชื่อเรื่อง (ภาษาอังกฤษ)}    & \ifdefined\ThesisEnglishName \ThesisEnglishName\fi    \\ \\
+            {\bf เสนอโดย}               & \ifdefined\studentname \studentname\fi                \\
+            {\bf รหัสนิสิต}                & \ifdefined\studentid \studentid\fi                    \\
+            {\bf หลักสูตร}                & \ifdefined\curriculumn \curriculumn\fi                \\
+            {\bf สาขา}                  & \ifdefined\major \major\fi                            \\
+            {\bf ภาควิชา}                & \ifdefined\department \department\fi                  \\
+            {\bf คณะ}                   & \ifdefined\faculty \faculty\fi                        \\
+            {\bf สถานที่ติดต่อ}             & \ifdefined\address \address\fi                        \\
+            {\bf โทรศัพท์}                & \ifdefined\telephone \telephone\fi                    \\
+            {\bf อีเมล}                  & \ifdefined\emailaddress \emailaddress\fi              \\
+            {\bf อาจารย์ที่ปรึกษา}          & \ifdefined\advisor \advisor\fi                        \\ \\
+            {\bf คำสำคัญภาษาไทย}         & \ifdefined\thakeywords \thakeywords\fi                \\
+            {\bf คำสำคัญภาษาอังกฤษ}       & \ifdefined\engkeywords \engkeywords\fi                \\
+        \end{tabular*}
+    \end{table}
+
+    \clearpage
+}
+
+\newcommand{\ThesisTitlePage}{
+    \begin{center}
+        {\bf\large {\ThesisProposalTH}}
+    \end{center}
+
+    {\noindent\bf \ThesisTopic}
+
+    \begin{table}[ht!]
+        \centering
+        \label{tab:thesisname}
+        \begin{tabular*}{\linewidth}{ll@{\extracolsep{\fill}}}
+            {\bf ภาษาอังกฤษ} & {\ifdefinded\ThesisEnglishName \ThesisEnglishName\fi} \\
+            {\bf ภาษาไทย}   & {\ifdefined\ThesisThaiName \ThesisThaiName \fi} \\
+        \end{tabular*}
+    \end{table}
+    
+}
