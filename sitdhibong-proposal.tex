@@ -15,53 +15,14 @@
 \renewcommand{\baselinestretch}{1.2}
 
 \include{thesis-lexicon}
-\include{configure}
+\include{configures}
+\input{commands}
 
 \begin{document}
-    \thispagestyle{empty}
-    \begin{center}
-        \bf
-        {\large โครงสร้างวิทยานิพนธ์ \\ (Thesis proposal)}
-    \end{center}
+    \makethesiscover
 
-    \noindent
-    \begin{table}[ht!]
-        \centering
-        \label{tab:metadata}
-        \begin{tabular*}{\linewidth}{ll@{\extracolsep{\fill}}}
-            {\bf ชื่อเรื่อง (ภาษาไทย)}      & \ThesisThaName    \\
-            {\bf ชื่อเรื่อง (ภาษาอังกฤษ)}    & \ThesisEngName    \\ \\
-            {\bf เสนอโดย}               & \studentname      \\
-            {\bf รหัสนิสิต}                & \studentid        \\
-            {\bf หลักสูตร}                & \curriculumn      \\
-            {\bf สาขา}                  & \major            \\
-            {\bf ภาควิชา}                & \department       \\
-            {\bf คณะ}                   & \faculty          \\
-            {\bf สถานที่ติดต่อ}             & \address          \\
-            {\bf โทรศัพท์}                & \telephone        \\
-            {\bf อีเมล}                  & \emailaddress     \\
-            {\bf อาจารย์ที่ปรึกษา}          & \advisor          \\ \\
-            {\bf คำสำคัญภาษาไทย}         & \thakeywords      \\
-            {\bf คำสำคัญภาษาอังกฤษ}       & \engkeywords      \\
-        \end{tabular*}
-    \end{table}
-
-    \clearpage
     \pagenumbering{arabic}
-    \begin{center}
-        {\bf\large โครงร่างวิทยานิพนธ์}
-    \end{center}
-
-    {\noindent\bf หัวข้อวิทยานิพนธ์}
-
-    \begin{table}[ht!]
-        \centering
-        \label{tab:thesisname}
-        \begin{tabular*}{\linewidth}{ll@{\extracolsep{\fill}}}
-            {\bf ภาษาอังกฤษ} & \ThesisEngName \\
-            {\bf ภาษาไทย}   & \ThesisThaName \\
-        \end{tabular*}
-    \end{table}
+    \ThesisTitlePage
 
     \input{intro/intro}
 
