@@ -1,12 +1,21 @@
 \section{งานวิจัยที่เกี่ยวข้อง} 
 
-\subsubsection{A Static Approach to Prioritizing JUnit Test Cases \cite{6363461}}
-ที่มา
+ในการดำเนินการวิจัยครั้งนี้ ได้ศึกษางานวิจัยอื่น ๆ ที่คาดว่าจะสามารถนำมาประยุกต์ใช้เพื่อแก้ไขปัญหาข้างต้นได้ โดยมีงานวิจัยที่เลือกมาดังนี้
 
-\subsubsection{Eclat: Automatic Generation and Classification of Test Inputs \cite{Heaton2000}}
+\subsection{งานวิจัย "A Static Approach to Prioritizing JUnit Test Cases" \cite{6363461}}
 
-\subsubsection{GRT: Program-analysis-guided random testing \cite{Ma2016}}
+งานวิจัยชิ้นนี้ได้นำเสนอวิธีการจัดเรียงกรณีทดสอบด้วยแนวทาง \emph{"JUnit test case Prioritization Techniques operating in the Absence of coverage information (JUPTA)"} 
+โดยอาศัยการวิเคราะห์ข้อมูล{\scg}ที่สร้างขึ้นจากกรณีทดสอบ และโปรแกรมภายใต้การทดสอบเพื่อประมาณค่าความสามารถที่กรณีทดสอบนั้นสามารถครอบคลุม{\sourcecode}ได้
+ทั้งนี้เพื่อเป็นการพิสูจน์แนวคิดที่ผู้วิจัยพบว่าวิธีการจัดเรียงกรณีทดสอบโดยส่วนใหญ่ที่ทราบจากการทบทวนวรรณกรรมนั้น จะใช้ข้อมูลเชิงพลวัต (Dynamic information)
+ที่ได้จาการทดสอบ{\sourcecode}ในแต่ละครั้ง เข้ามาช่วยวิเคราะห์ลำดับของกรณีทดสอบในครั้งถัดไป ซึ่งพบว่าข้อมูลที่ได้นั้นอาจจะเป็นข้อมูลที่ล้าหลังไปจาก{\sourcecode} 
+หรือชุดกรณีทดสอบที่สร้างขึ้นมาใหม่เพือทดสอบในรอบปัจจุบัน ซึ่งผลการทดสอบทางสถิติของการจัดเรียงกรณีทดสอบด้วยแนวคิด JUPTA โปรแกรมภาษาจาวาทั้ง 4 โปรแกรม 
+รวมกว่า 19 รุ่นนั้น มีประสิทธิภาพในการค้นหาข้อผิดพลาดมากกว่าการจัดเรียงกรณีทดสอบแบบสุ่มหรือไม่มีการจัดเรียงใด ๆ และมีประสิทธิภาพในการค้นหาข้อผิดพลาดใกล้เคียงกันกับชุดกรณีทดสอบ
+ที่สร้างขึ้นจากข้อมูลเชิงพลวัตประกอบการพิจารณา
+
+\subsection{Eclat: Automatic Generation and Classification of Test Inputs \cite{Heaton2000}}
+
+\subsection{GRT: Program-analysis-guided random testing \cite{Ma2016}}
 วิธีการสร้างกรอบข้อมูล เพื่อช่วยให้การสร้างข้อมูลทดสอบทำได้ง่ายมากยิ่งขึ้น
 
-\subsubsection{Automatic generation and classification of test inputs \cite{Pacheco2005}}
+\subsection{Automatic generation and classification of test inputs \cite{Pacheco2005}}
 การสร้างกลุ่มของกรณีทดสอบอย่างอัตโนมัติ ช่วยในการสร้างกรณีทดสอบ
