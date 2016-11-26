@@ -162,15 +162,15 @@
 \code{\overline{10}\ \textendash\ 12\ \textendash\ 13} คือ {\bf \InfeasiblePath} เนื่องจากไม่สามารถหาค่าที่สอดคล้อง
 กับ\PredicateNode\ 10 และ 12 นั่นคือ \code{student\_score \geq 80} และ \code{student\_score = 0} ได้ในทุก ๆ กรณี
 
-\subsection{\FirstTimeDefine{\Cyclometric}{\CyclometricEN}}
+\subsection{\FirstTimeDefine{\Cyclomatic}{\CyclomaticEN}}
 
 % การวัดความซับซ้อนของโปรแกรมนั้นสามารถทำได้หลายแนวทาง ทั้งการประมาณการจากจำนวนกรณีทดสอบ 
 % ที่ครอบคลุม{\sourcecode}ได้ตามระดับความครอบคลุม (Coverage level) \cite{Ferrer2013} ตามที่ต้องการ
 % หรือประเมินความซับซ้อนของแผนภาพกระบวนการทางธุรกิจ (Business Process Model and Notation: BPMN) ที่จะนำโปรแกรมเข้าไปช่วยบริหารจัดการ
 % \cite{Solichah2013}
-ในการวัดความซับซ้อนเชิงโครงสร้างของโปรแกรมนั้น McCabe ได้กำหนด \Cyclometric\ \cite{McCabe1976}\ 
+ในการวัดความซับซ้อนเชิงโครงสร้างของโปรแกรมนั้น McCabe ได้กำหนด \Cyclomatic\ \cite{McCabe1976}\ 
 ไว้เพื่อเป็นมาตรวัดความซับซ้อนของโปรแกรม โดยใช้การพิจารณาจากจำนวน\Node\ \Edge และ\PredicateNode\ ที่ประกอบกันภายใน\ProgramGraph\ 
-ดัง\eq{eq:complexitymeasure}
+ดัง\eq{eq:complexitymeasureStronglyConnected} และ \eq{eq:complexitymeasure}
 
 \begin{align}
     v(G) &= e - n + p \label{eq:complexitymeasureStronglyConnected} \\
@@ -178,20 +178,21 @@
 \end{align}
 
 \begin{table}[ht!]
-    \begin{tabular}{lll}
-    เมื่อ & $v(G)$    & คือ ค่า{\Cyclometric}ที่คำนวณได้               \\
+    \begin{tabular}{lcl}
+    เมื่อ & $v(G)$    & คือ ค่า{\Cyclomatic}ที่คำนวณได้               \\
         & $e$       & คือ จำนวน{\Edge}ใน\ProgramGraph            \\
         & $n$       & คือ จำนวน{\Node}ใน\ProgramGraph            \\
         & $p$       & คือ จำนวนพื้นที่ที่เชื่อมต่อกันใน\ProgramGraph   \\
     \end{tabular}
 \end{table}
 
-
-
-ยกตัวอย่างเช่นหากคำนวนค่า{\Cyclometric}ของ{\ProgramGraph}ใน{\figpageref{fig:programGraph}} จะได้ว่า
+โดยที่ \eq{eq:complexitymeasureStronglyConnected} จะใช้กับกราฟที่เชื่อมต่อกันแบบเข้ม (Strongly connected graph) 
+นั่นคือกราฟนั้นจะต้องมีทางเดินจาก $n_j$ ไปยัง $n_k$ เสมอ แต่หากไม่ใช่แล้วจะใช้ \eq{eq:complexitymeasure} โดยจะกำหนดให้ 
+$p = 1$ จาก{\ProgramGraph}ใน{\figpageref{fig:programGraph}} ซึ่งมี{\Edge} ทั้งสิ้น 20 เส้น และจำนวน{\Node}ทั้งสิ้น 
+16 \Node ดังนั้นหากคำนวนระดับความซับซ้อนตาม{\Cyclomatic}ของ{\ProgramGraph}นี้ จะได้ว่า
 
 \begin{align*}
     v(G) &= e - n + 2p \\
          &= 19 - 16 + 2(4) \\
-         &= 11
+    v(G) &= 11
 \end{align*}
