@@ -2,11 +2,11 @@
 
 สำหรับโปรแกรมเขียนด้วยภาษาที่มีข้อกำหนดจัดเจนแล้ว {\ProgramGraph}\ คือ \FirstTimeDefine{\DirectedGraph}{\DirectedGraphEN} 
 ซึ่งแต่ละ {\FirstTimeDefine{\Node}{\NodeEN}} แทนส่วนประกอบของชุดคำสั่ง โดย{\FirstTimeDefine{\Edge}{\EdgeEN}} แทนการไหลของการควบคุม 
-หาก $i$ และ $j$ คือ {\Node}ในกราฟโปรแกรม ที่เชื่อมกันด้วย{\Edge}แบบมีทิศทางแล้ว จะสื่อความหมายว่า "{\Node} $j$ จะทำงานในลำดับถัดไปหลังจากที่ $i$ 
-ทำงานเสร็จสิ้น" \cite{Jorgensen2013} โดยเริ่มต้นด้วย{\Node}ที่มีดีกรีออก (Out-degree) มีค่าเป็น 1 และสิ้นสุด ณ \Node ที่มีดีกรีเข้า (In-degree) 
-มีค่าเป็น 1 เช่นเดียวกัน ซึ่งรูปแบบความสัมพันธ์ของกราฟโปรแกรมนั้น McCabe \cite{Watson1996} 
-ได้กำหนดรูปแบบโครงสร้างการทำงานขั้นพื้นฐานของการพัฒนาโปรแกรม (The primitive operations of structured programming) {\figurename}
-\ref{fig:graphtype}\ (\pagename\ \pageref{fig:graphtype})
+หาก $i$ และ $j$ คือ {\Node}ในกราฟโปรแกรม ที่เชื่อมกันด้วย{\Edge}แบบมีทิศทางจาก $i$ ไปยัง $j$ แล้ว จะสื่อความหมายว่า 
+"{\Node} $j$ จะทำงานในลำดับถัดไปหลังจากที่ $i$ ทำงานเสร็จสิ้น" \cite{Jorgensen2013} โดยเริ่มต้นด้วย{\Node}ที่มีดีกรีออก 
+(Outdegree) มีค่าเป็น 1 และสิ้นสุด ณ \Node ที่มีดีกรีเข้า (Indegree) มีค่าเป็น 1 เช่นเดียวกัน ซึ่งรูปแบบความสัมพันธ์ของกราฟโปรแกรมนั้น 
+McCabe \cite{Watson1996} ได้กำหนดรูปแบบโครงสร้างการทำงานขั้นพื้นฐานของการพัฒนาโปรแกรม 
+(The primitive operations of structured programming) \figpageref{fig:graphtype}
 
 \begin{figure}[ht!]
     \centering
