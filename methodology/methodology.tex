@@ -1,8 +1,8 @@
 \section{แนวคิดและวิธีการดำเนินงาน}
 
-งานวิจัยนี้นำเสนอแนวทางในการสร้างกรณีทดสอบและข้อมูลทดสอบ โดยการรวบรวม{\StaticInformation}ประกอบการพิจารณา 
-โดยกรณีทดสอบที่สร้างขึ้นสามารถทดสอบเส้นทางการเรียกหากันอย่างน้อย 1 เส้นทางระหว่างคลาสที่มีปฏิสัมพันธ์กัน 
-ซึ่งภาพรวมการดำเนินงานวิจัยนั้นเป็นดังรูปที่ \ref{fig:methodologyoverview} ซึ่งอธิบายได้ดังนี้
+งานวิจัยนี้นำเสนอแนวทางในการสร้างกรณีทดสอบและข้อมูลทดสอบสำหรับ{\TestPath} โดยการรวบรวม{\StaticInformation}
+เพื่อประกอบการพิจารณา โดยกรณีทดสอบที่สร้างขึ้นสามารถทดสอบเส้นทางการเรียกหากันระหว่าง{\class}อย่างน้อย 
+1 เส้นทาง ซึ่งภาพรวมการดำเนินงานวิจัยนั้นเป็นดังรูปที่ \figpageref{fig:methodologyoverview} ซึ่งอธิบายได้ดังนี้
 
 \begin{sidewaysfigure}
     \centering
@@ -12,31 +12,27 @@
 \end{sidewaysfigure}
 
 
-\subsection{ภาพรวมงานวิจัย}
-% \begin{landscape}
-    \begin{sidewaysfigure}
-        \centering
-        \includegraphics[width=0.9\textwidth]{methodology-overview}
-        % \includegraphics[width=0.9\textwidth]{methodology-overview}
-        \caption[setup]{ภาพรวมการดำเนินงานวิจัย}
-        \label{fig:methodologyoverview}
-    \end{sidewaysfigure}
-% \end{landscape}
-
-งานวิจัยนี้นำเสนอแนวทางในการสร้างกรณีทดสอบและข้อมูลทดสอบ โดยการรวบรวม{\StaticInformation}ประกอบการพิจารณา 
-โดยกรณีทดสอบที่สร้างขึ้นสามารถทดสอบเส้นทางการเรียกหากันอย่างน้อย 1 เส้นทางระหว่างคลาสที่มีปฏิสัมพันธ์กัน 
-ซึ่งภาพรวมการดำเนินงานวิจัยนั้นเป็นดังรูปที่ \ref{fig:methodologyoverview} ซึ่งอธิบายได้ดังนี้
-
 \subsection{การวิเคราะห์ข้อมูลเบื้องต้น}
 กระบวนการดำเนินงานนั้นจะเริ่มต้นด้วยการอ่าน{\sourcecode}จาก{\Repository}
 
-\subsubsection{การทำเหมืองข้อมูลค่าคงที่}
-
-\subsubsection{การทำเหมืองข้อมูลค่าคงที่}
-
-\subsubsection{การสร้างแผนภาพ}
+\subsubsection{การทำเหมืองข้อมูลค่าคงที่ (2)}
+\subsubsection{การสร้างกราฟ (3)}
+\subsubsection{การแทรกชุดคำสั่ง (4)}
 
 \subsection{การสร้างกรณีทดสอบ}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{methodology-activities-test-case-gen}
+    % \includegraphics[width=0.9\textwidth]{methodology-overview}
+    \caption{ขั้นตอนการสร้างกรณีทดสอบ}
+    \label{fig:testcaseGenerationActivity}
+\end{figure}
+
+\subsubsection{เลือก\{TestPath}}
+\subsubsection{การวิเคราะห์พารามิเตอร์และการคืนค่าของ{\method}}
+\subsubsection{สร้างเวกเตอร์นำเข้า}
+\subsubsection{สร้างกรณีทดสอบ}
 
 \subsection{การปรับค่าความคาดหวัง}
 
