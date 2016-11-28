@@ -10,4 +10,3 @@ class SimpleBonusScore {
         return student_score;
     }
 }
-
