@@ -158,25 +158,58 @@ McCabe \cite{Watson1996} ได้กำหนดรูปแบบโครง�
 และเพื่อให้เข้าใจถึงการเกิดปฏิสัมพันธ์ซึ่งกันและกันระหว่าง{\class}ภายในซอฟต์แวร์ภายใต้การทดสอบ (Software under test: SUT) จาก{\sourcecode} 
 ที่ได้รับมานั้น จึงจำเป็นจะต้องพิจารณา{\sourcecode}แล้วจึงนำมาสร้างเป็น \FirstTimeDefine{\scg}{\scgEN} โดยที่{\scg} 
 นั้นจะใช้{\Node}แทน{\class}ทั้งหมด เชื่อมกันด้วย{\Edge}ที่กำกับด้วย{\method}ที่{\class}ใช้ปฏิสัมพันธ์กัน หากแปลง{\sourcecode}จาก
-\figpageref{fig:pseudocodeGrading} ให้เป็น{\sourcecode}ภาษาจาวา (Java) โดยแยกออกเป็น 2 \class\ ได้แก่ \code{SimpleBonusScore} 
-และ \code{SimpleGrading} ดัง \figpageref{fig:javaBonusScore} และ\figpageref{fig:javaGrading}ตามลำดับ
+\figpageref{fig:pseudocodeGrading} ให้เป็น{\sourcecode}ภาษาจาวา (Java) โดยแยกออกเป็น 3 \class\ ได้แก่ \code{SimpleQuiz} 
+ทำหน้าที่อ่านข้อมูลคำถามภายในชั้นเรียน \code{SimpleBonusScore} ทำหน้าที่คำนวณคะแนนเพิ่มพิเศษ และ \code{SimpleGrading} ทำหน้าที่คำนวณเกรดของนิสิต 
+ดัง \figpageref{fig:javaQuiz} \figpageref{fig:javaBonusScore} และ\figpageref{fig:javaGrading}ตามลำดับ
 
 \begin{figure}[ht!]
-    \lstset{style=thesiscodestyle}
+    \lstset{basicstyle=\small,style=thesiscodestyle,language=java}
+    \lstinputlisting[language=Java]{related/SimpleQuiz.java}
+    \caption{{\sourcecode}ภาษาจาวาสำหรับอ่านคะแนนคำถามภายในชั้นเรียน}
+    \label{fig:javaQuiz}
+\end{figure}
+
+\begin{figure}[ht!]
+    \lstset{basicstyle=\small,style=thesiscodestyle,language=java}
     \lstinputlisting[language=Java]{related/SimpleBonusScore.java}
     \caption{{\sourcecode}ภาษาจาวาสำหรับคำนวนคะแนนเพิ่มพิเศษ}
     \label{fig:javaBonusScore}
 \end{figure}
 
 \begin{figure}[ht!]
-    \lstset{style=thesiscodestyle}
+    \lstset{basicstyle=\small,style=thesiscodestyle}
     \lstinputlisting[language=Java]{related/SimpleGrading.java}
     \caption{{\sourcecode}ภาษาจาวาสำหรับคำนวณเกรดนิสิต}
     \label{fig:javaGrading}
 \end{figure}
 
-% - - - - - - - - - - - - - - - - - - - -
 \clearpage
+จาก\figpageref{fig:javaGrading} เมื่อกำหนดให้ \code{Q} แทน\class\ \code{SimpleQuiz}, \code{G} แทน{\class} \code{SimpleGrading} 
+และ \code{B} แทน\class\ \code{SimpleBonusScore} โดยที่\class\ \code{SimpleGrading} เรียกใช้งาน{\method} \code{score} 
+ซึ่งเป็น{\method}ของ{\class} \code{SimpleBonusScore} ผ่าน{\method} {\code{grading}} ดังนั้น{\scg}สำหรับความสัมพันธ์นี้จะเป็นดัง
+{\figpageref{fig:scggrading}} ซึ่งในการพัฒนาจริงนั้น\class\ \code{SimpleGrading} และ\class\ \code{SimpleBonusScore}
+อาจมีการเรียกใช้งานระหว่างกันมากกว่า 1 \method % ดังที่ได้แสดงใน{\figpageref{fig:subactualscg}}
+
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{simple-static-call-graph}
+    % \begin{minipage}[t]{0.5\linewidth}
+    %     \centering
+    %     \includegraphics[width=0.8\textwidth]{simple-static-call-graph}
+    %     \subcaption{{\scg}โปรแกรมคำนวณเกรดนิสิต}
+    %     \label{fig:subscggrading}
+    % \end{minipage}%
+    % \begin{minipage}[t]{0.5\linewidth}
+    %     \centering
+    %     \includegraphics[width=0.8\textwidth]{simple-static-call-graph-multiple-call}
+    %     \subcaption{{\scg}ของโปรแกรมในกรณีที่\code{SimpleGrading} มีการเรียกใช้งาน{\code{SimpleBonusScore}} หลาย{\method}}
+    %     \label{fig:subactualscg}
+    % \end{minipage}%
+    \caption{{\scg}โปรแกรมคำนวณเกรดนิสิต}
+    \label{fig:scggrading}
+\end{figure}
+
+% - - - - - - - - - - - - - - - - - - - -
 \subsection{\FirstTimeDefine{\InfeasiblePath}{\InfeasiblePathEN}}
 
 \InfeasiblePath คือ ทางเดินที่ไม่สามารถหาค่าทุก ๆ ความเป็นไปได้ซึ่งสอดคล้องกับ{\PredicateNode}ที่อยู่บนทางเดินนั้น 
@@ -186,7 +219,7 @@ McCabe \cite{Watson1996} ได้กำหนดรูปแบบโครง�
 ดังแสดงใน{\figpageref{fig:infeasiblePath}} เนื่องจากไม่สามารถหาค่าที่สอดคล้อง กับ\PredicateNode\ 12 และ 14 
 นั่นคือ \code{student\_score \geq 80} และ \code{student\_score = 0} ได้ในทุก ๆ กรณี
 
-\begin{figure}[ht!]
+\begin{figure}[t!]
     \centering
     \includegraphics[width=0.5\textwidth]{grading-program-graph-subgraph}
     \caption{โครงสร้างของโปรแกรมที่พบ{\InfeasiblePath}}
@@ -197,34 +230,6 @@ McCabe \cite{Watson1996} ได้กำหนดรูปแบบโครง�
 ดังนั้นการทดสอบโปรแกรมนั้นจึงจำเป็นจะต้องวิเคราะห์{\InfeasiblePath}ที่อยู่ภายในโครงสร้างของโปรแกรมเพื่อรายงานผลให้นักพัฒนาได้ทราบและแก้ไข
 ต่อไปได้
 
-% - - - - - - - - - - - - - - - - - - - -
-% \clearpage
-\subsection{\FirstTimeDefine{\scg}{\scgEN}}
-
-จาก\figpageref{fig:javaGrading} เมื่อกำหนดให้ \code{G} แทน{\class} \code{SimpleGrading} และ \code{B} 
-แทน\class\ \code{SimpleBonusScore} โดยที่\class\ \code{SimpleGrading} เรียกใช้งาน{\method} \code{score} 
-ซึ่งเป็น{\method}ของ{\class} \code{SimpleBonusScore} ผ่าน{\method} {\code{grading}} ดังนั้น{\scg}สำหรับความสัมพันธ์นี้จะเป็นดัง
-{\figpageref{fig:subscggrading}} ซึ่งในการพัฒนาจริงนั้น\class\ \code{SimpleGrading} และ\class\ \code{SimpleBonusScore}
-อาจมีการเรียกใช้งานระหว่างกันมากกว่า 1 \method ดังที่ได้แสดงใน{\figpageref{fig:subactualscg}}
-
-\begin{figure}
-    \begin{minipage}[t]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.8\textwidth]{simple-static-call-graph}
-        \subcaption{{\scg}โปรแกรมคำนวณเกรดนิสิต}
-        \label{fig:subscggrading}
-    \end{minipage}%
-    \begin{minipage}[t]{0.5\linewidth}
-        \centering
-        \includegraphics[width=0.8\textwidth]{simple-static-call-graph-multiple-call}
-        \subcaption{{\scg}ของโปรแกรมในกรณีที่\code{SimpleGrading} มีการเรียกใช้งาน{\code{SimpleBonusScore}} หลาย{\method}}
-        \label{fig:subactualscg}
-    \end{minipage}%
-    \caption{{\scg}โปรแกรมคำนวณเกรดนิสิต}
-    \label{fig:scggrading}
-\end{figure}
-
-\newpage
 \subsection{\FirstTimeDefine{\Cyclomatic}{\CyclomaticEN}}
 
 % การวัดความซับซ้อนของโปรแกรมนั้นสามารถทำได้หลายแนวทาง ทั้งการประมาณการจากจำนวนกรณีทดสอบ 

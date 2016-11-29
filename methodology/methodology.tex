@@ -1,8 +1,8 @@
 \section{แนวคิดและวิธีการดำเนินงาน}
 
-งานวิจัยนี้นำเสนอแนวทางในการสร้างกรณีทดสอบและข้อมูลทดสอบสำหรับ{\TestPath} โดยการรวบรวม{\StaticInformation}
-เพื่อประกอบการพิจารณา โดยกรณีทดสอบที่สร้างขึ้นสามารถทดสอบเส้นทางการเรียกหากันระหว่าง{\class}อย่างน้อย 
-1 เส้นทาง ซึ่งภาพรวมการดำเนินงานวิจัยนั้นเป็นดังรูปที่ \figpageref{fig:methodologyoverview} ซึ่งอธิบายได้ดังนี้
+งานวิจัยนี้นำเสนอวิธีการสร้างกรณีทดสอบและข้อมูลทดสอบสำหรับ{\TestPath}ระหว่าง{\CUT}อย่างน้อย 1 เส้นทาง 
+บน{\StaticInformation}จาก{\sourcecode}ภาษาจาวาตามที่ผู้ทดสอบสนใจ โดยมีภาพรวมการดำเนินงานวิจัย 
+ดัง\figpageref{fig:methodologyoverview} ซึ่งมีแนวทางการดำเนินงานดังนี้
 
 \begin{sidewaysfigure}
     \centering
@@ -11,15 +11,81 @@
     \label{fig:methodologyoverview}
 \end{sidewaysfigure}
 
-
 \subsection{การวิเคราะห์ข้อมูลเบื้องต้น}
-กระบวนการดำเนินงานนั้นจะเริ่มต้นด้วยการอ่าน{\sourcecode}จาก{\Repository}
+
+ในขั้นตอนนี้เริ่มต้นด้วยการนำเข้าข้อมูล{\sourcecode}จาก{\Repository} เพื่อนำมารวบรวม{\StaticInformation} 
+โดยสนใจเพียงเฉพาะ{\class}ซึ่งบรรจุอยู่ภายในกลุ่มข้อมูล (Package) ตามที่ผู้ใช้งานระบุ กำหนดให้เป็น "\FirstTimeDefine{\CUT}{\CUTEN}" 
+ทั้งนี้กระบวนการจะประกอบไปด้วย 3 ขั้นตอนด้วยกัน นั่นคือ
+{\bf การทำเหมืองข้อมูลค่าคงที่ (2)}, {\bf การสร้างกราฟ (3)} และ{\bf การแทรกชุดคำสั่งใน{\sourcecode} (4)} โดยมีแนวทางการดำเนินงานของแต่ละขั้นตอน 
+ดังนี้
 
 \subsubsection{การทำเหมืองข้อมูลค่าคงที่ (2)}
+
+การทำเหมืองข้อมูลค่าคงที่นั้นเป็นกระบวนการเพื่อกำหนดแนวทางการในการสร้างข้อมูลทดสอบสำหรับ{\TestPath}ที่เลือก โดยมีแนวทางการจัดเก็บค่าคงที่ที่ประกาศไว้
+ภายใน{\sourcecode} โดยสนใจกลุ่มข้อมูล 2 กลุ่ม ได้แก่
+
+\begin{enumerate}
+    \item ข้อมูลพื้นฐาน (Primitive data) {\it (ก)} ซึ่งเป็นข้อมูลพื้นฐานที่ใช้งานภายใน{\class} ซึ่งในที่นี้จะสนใจข้อมูลพื้นฐาน 2 ประเภทได้แก่
+        \begin{enumerate}
+            \item {\bf ตัวอักษร} ซึ่งมีประเภทข้อมูลเป็น {\it String} ในภาษาจาวา
+            \item {\bf ตัวเลข} ซึ่งมีประเภทข้อมูล ได้แก่ {\it byte}, {\it short}, {\it int}, {\it long}, {\it float} 
+               และ {\it double} ในภาษาจาวา
+        \end{enumerate}
+    \item โครงสร้างข้อมูลจำกัดเขต (Enumeration) {\it (ข)} ซึ่งมีประเภทข้อมูลเป็น {\it enum} ในภาษาจาวา
+\end{enumerate}
+% (String) ตัวเลข (Number) ซึ่งมีประกอบไปด้วยข้อมูลประเภท byte, short, int, long, float และ double และชุดข้อมูล (Enumeration) 
+
+ทั้งนี้จะไม่สนใจข้อมูลเชิงตรรกะ (มีชนิดข้อมูลเป็น {\it bool} ในภาษาจาวา) เนื่องมาจากว่าตัวเลือกที่เป็นไปได้จำกัดอยู่แล้ว 
+นอกจากนั้นจะยังไม่สนใจข้อมูลจำเพาะ ที่กำหนดขึ้นมาใช้งานเอง 
+
+หลังจากรวบรวมค่าคงที่จาก{\sourcecode}ได้เรียบร้อยแล้ว จะนำ{\bf ข้อมูลพื้นฐาน (ก)} และ{\bf โครงสร้างข้อมูลจำกัดเขต (ข)} ที่รวบรวมได้
+จัดหมวดหมู่และบันทึกไว้ภายใน{\it ฐานข้อมูล (A)}
+
 \subsubsection{การสร้างกราฟ (3)}
+
+กระบวนการสร้างกราฟนั้นจะรับข้อมูล{\sourcecode}จาก{\Repository}เพื่อนำข้อมูลมาใช้สร้างกราฟ โดยแบ่งออกเป็น 2 กระบวนการย่อยด้วยกัน 
+นั้นคือ การสร้าง{\scg} และการสร้าง{\cfg} ดังนี้
+
+\begin{enumerate}
+    \item {\bf สร้าง{\scg}} อ่านข้อมูล{\CUT}ตามที่ผู้ใช้งานสนใจ แล้วนำมาสร้าง{\scg} โดยผลลัพธ์ที่ได้นั้นจะแบ่งเป็น 3 กลุ่ม ได้แก่
+        \begin{enumerate}
+            \item การเรียกใช้งานระหว่าง{\CUT}ด้วยกัน \label{ord:scgcut}
+            \item การเรียกใช้งานระหว่าง{\CUT}และ{\class}ภายในชุดพัฒนาของจาวา (Java SDK) \label{ord:scgjdk}
+            \item การเรียกใช้งานระหว่าง{\CUT}และชุดคำสั่งภายนอก (3$^{rd}$ party library) \label{ord:scg3rd}
+        \end{enumerate}
+        ซึ่งในแนวทางการดำเนินงานนี้จะสนใจเฉพาะ{\scg}ของ{\CUT}เท่านั้น ดังนั้นในขั้นตอนนี้ไม่สนใจกราฟที่เกิดจากการเรียกใช้ในข้อ \ref{ord:scgjdk} 
+        และ \ref{ord:scg3rd} ตลอดจนกราฟที่เกิดจากการสร้างวัตถุใหม่ เพื่อให้ได้{\scg}เฉพาะ{\CUT} ดังเช่น \figpageref{fig:subscggrading}
+
+    \item {\bf สร้าง{\cfg}} โดยจะอ่านข้อมูลของ{\CUT}นำมาสร้าง{\cfg}และจัดเก็บข้อมูลไว้ภายในฐานข้อมูล
+\end{enumerate}
+
+เมื่อสิ้นสุดกระบวนการจะนำข้อมูล{\bf {\scg} (ค)} และ{\bf {\cfg} (ง)} ที่ได้จัดเก็บลง {\it ฐานข้อมูล (A)} เพื่อจัดเตรียมไว้สำหรับ 
+{\bf ขั้นตอนการสร้างกรณีทดสอบ (5)} และ{\bf เปรียบเทียบผลลัพธ์การดำเนินการ (8)} ต่อไป
+
 \subsubsection{การแทรกชุดคำสั่ง (4)}
 
-\subsection{การสร้างกรณีทดสอบ}
+เนื่องจากว่าการทดสอบนี้จำเป็นต้องครอบคลุม{\Path}ระหว่าง{\CUT} ดังนั้นจำเป็นจะต้องแทรกชุดคำสั่งใน{\sourcecode}ในแต่ละขั้นตอนการทำงาน 
+(Code instrumentate) จากนั้นจึงนำ{\sourcecode}ที่ผ่านการแทรกชุดคำสั่งเรียบกร้อยแล้วไปใช้ในกระบวนการทดสอบ 
+แล้วจึงจัดเก็บผลลัพธ์ที่ได้ระหว่างขั้นตอนการทดสอบ เพื่อนำมาเปรียบเทียบกับ{\TestPath}ที่เลือก
+
+\begin{figure}[hbt!]
+    \lstset{basicstyle=\tiny,style=thesiscodestyle}
+    \lstinputlisting[language=java]{methodology/SimpleBonusScoreInstrumented.java}
+    \caption{{\class} \code{SimpleBonusScoreInstrumented}}
+    \label{fig:javaBonusScoreInstrumented}
+\end{figure}
+
+จากตัวอย่าง\figpageref{fig:javaBonusScoreInstrumented} เป็น{\sourcecode}ที่สืบเนื่องมาจาก\figpageref{fig:javaBonusScore}
+แต่ต่างกันโดยแทรกชุดคำสั่งเข้าไปภายใน{\sourcecode} ณ บรรทัดที่ 5, 10, 13 และบรรทัดที่ 18 ซึ่งการแทรกชุดคำสั่งในกระบวนการนี้จะสนใจเพียงแค่{\CUT} เท่านั้น
+
+เมื่อเสร็จสิ้นกระบวนการแทรกชุดคำสั่ง จะนำ{\sourcecode}ที่ได้จัดเก็บไว้ใน {\it ฐานข้อมูล (A)} เพื่อจัดเตรียมไว้สำหรับนำไปทดสอบอีกครั้ง
+
+\clearpage
+\subsection{การสร้างกรณีทดสอบ (5)}
+
+การดำเนินงานวิจัยในครั้งนี้จะนำข้อมูลกราฟ (3) ซึ่งประกอบไปด้วยข้อมูล {\it {\scg} (ค)} ร่วมกับ{\it {\cfg} (ง)} ใช้เป็นข้อมูลเริ่มต้นสำหรับการหา{\TestPath}
+ระหว่าง{\CUT} อย่างน้อย 1 เส้นทางระหว่าง{\class} แล้วจึงสร้างข้อมูลนำเข้าโดยพิจารณาจาก{\PredicateNode}ที่ปรากฎบน{\TestPath}ที่เลือก 
+สุดท้ายจีงนำข้อมูลทั้งหมดที่ได้สร้างเป็นชุดกรณีทดสอบ โดยมีภาพรวมการดำเนินงานดัง {\figpageref{fig:testcaseGenerationActivity}}
 
 \begin{figure}[ht!]
     \centering
@@ -29,15 +95,163 @@
     \label{fig:testcaseGenerationActivity}
 \end{figure}
 
-\subsubsection{เลือก\{TestPath}}
-\subsubsection{การวิเคราะห์พารามิเตอร์และการคืนค่าของ{\method}}
-\subsubsection{สร้างเวกเตอร์นำเข้า}
-\subsubsection{สร้างกรณีทดสอบ}
+\subsubsection{เลือก{\TestPath} (5.1)}
 
-\subsection{การปรับค่าความคาดหวัง}
+ในขั้นตอนนี้จะพิจารณาจากข้อมูล{\it \scg (ก)} ร่วมกับ {\it \cfg (ข)} เพื่อเลือก{\TestPath}ที่ยาวที่สุดที่จะเป็นไปได้ใน{\scg} 
+ในกรณีที่ระหว่าง{\CUT}นั้นมี{\Path}เชื่อมต่อกันมากกว่า 1 {\Path} จะกำหนดน้ำหนักให้กับ{\Edge}ของ{\scg} โดยพิจารณาจากจำนวนการเรียกใช้งานที่พบภายใน{\cfg} 
+ตัวอย่างเช่น ระหว่าง\class\ \figpageref{fig:javaQuiz} และ\figpageref{fig:javaBonusScore} นั้นพบการเชื่อมต่อระหว่างกัน 2 {\method} นั่นคือ
+\code{getQuizScore} และ\ \code{getQuizSum} แต่จากการพิจารณาใน{\sourcecode}พบว่า{\class}\ \code{SimpleBonusScore} นั้นเรียกใช้งาน\method
+\code{getQuizScore} รวมทั้งสิ้น 2 ครั้ง ในขณะที่มีการเรียกใช้งาน \code{getQuizSum} เพียง 1 ครั้ง ดังนั้นจะได้{\scg}ที่ถ่วงน้ำหนักบน{\Edge}เรียบร้อยแล้วดัง 
+\figpageref{fig:scgWeightedEdge}
 
-\subsection{การทดสอบซอฟต์แวร์}
+ซึ่งจะได้{\scg}ของทั้ง 3 {\class}นี้เป็น
 
-\subsection{เปรียบเทียบผลลัพธ์การดำเนินงาน}
+\begin{figure}[ht!]
+    \centering
+    \begin{minipage}{.8\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{scg-weighted-edges}
+        \subcaption{{\scg}ถ่วงน้ำหนัก}
+        \label{fig:scgWeightedEdge}
+    \end{minipage}
+    \begin{minipage}{.8\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{scg-weighted-edges-testpath}
+        \subcaption{\TestPath\ ที่เลือก}
+        \label{fig:scgWeightedEdgeTestPathSelected}
+    \end{minipage}
+    \caption{{\scg}สำหรับโปรแกรมคำนวณเกรดนิสิต}
+    \label{fig:scgCallGraph}
+\end{figure}
 
-จากรูปที่ \ref{fig:methodologyoverview} การดำเนินงานวิจััยจะเริ่มต้น
+ดังนั้น {\TestPath}ที่เลือกระหว่าง \code{SimpleBonusScore} และ \code{SimpleQuiz} คือ{\Path}ที่\class\ \code{SimpleBonusScore} 
+เรียกใช้งาน{\method}\ \code{getQuizeScore} ดัง\figpageref{fig:scgWeightedEdgeTestPathSelected} ซึ่งมีแนวทางการเลือก{\TestPath} ดังนี้
+
+\begin{enumerate}
+    \item ให้น้ำหนักในทิศทางที่มุ่งไปยัง{\Node} ซึ่งพบการเรียกใช้งานระหว่าง{\class}ตามที่กำหนดไว้จาก{\scg}มากที่สุดเสมอ
+    \item เลือก{\TestPath}ที่สั้นที่สุดก่อนเสมอ
+    \item เลือก{\TestPath}ที่พบ{\PredicateNode}น้อยที่สุดก่อนเสมอ
+    \item เลือก{\TestPath}ไปยังทิศที่ทำให้{\PredicateNode}มีค่าความจริงเป็นจริงก่อนเสมอ
+\end{enumerate}
+
+เมื่อพิจารณา{\cfg}ของ{\class}\ \code{SimpleGrading} และ \code{SimpleBonusScore} ดัง{\figpageref{fig:cfgSimpleGrade} 
+และ\figpageref{fig:cfgSimpleBonusScore} ตามลำดับ พบว่า\code{SimpleGrading} ได้เรียกใช้งาน{\method} \code{score} ของ\class 
+\code{SimpleBonusScore} ที่{\Node} 18 เรียบร้อยแล้ว จึงเลือก{\TestPath}ที่สั้นที่สุดภายใน {\code{SimpleGrade}} นั่นคือ 
+17\ \textendash\ 18\ \textendash\ 19\ \textendash\ 20 \textendash\ 25\ \textendash\ 26 
+
+ถัดมาจึงพิจารณา{\TestPath}ระหว่าง \code{SimpleBonusScore} และ \code{SimpleQuiz} ณ ตำแหน่งที่พบการเรียกใช้งาน \code{getQuizScore}
+ซึ่งพบที่{\Node} 11 และ 16 หากเลือกเส้นทางทดสอบ เมื่อพิจารณาจากแนวทางด้านบนแล้ว จะได้{\TestPath} คือ 6\ \textendash\ 7\ \textendash\ 8\ 
+\textendash\ 9\ \textendash\ 10\ \textendash\ 11\ \textendash\ 12\ \textendash\ 13\ \textendash\ 14\ \textendash\ 21\ 
+\textendash\ 22\ \textendash\ 24 
+
+โดยมี{\TestPath} ดัง\tablename\ \tabpageref{tab:testPath}
+
+\begin{table}[ht!]
+    \centering
+    \caption{{\TestPath}ที่เลือกโดยพิจารณาจาก{\scg}ร่วมกับ{\cfg}}
+    \label{tab:testPath}
+    \begin{tabular}{|l|l|}
+        \hline
+        \code{SimpleGrading}    & 17\ \textendash\ 18\ \textendash\ 19\ \textendash\ 20 \textendash\ 25\ \textendash\ 26 \\ \hline
+        \code{SimpleBonusScore} & 6\ \textendash\ 7\ \textendash\ 8\ \textendash\ 9\ \textendash\ 10\ \textendash\ 11\ \textendash\ 
+                                    12\ \textendash\ 13\ \textendash\ 14\ \textendash\ 21\ \textendash\ 22\ \textendash\ 24  \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[ht!]
+    \centering
+    \centering
+    \includegraphics[width=0.7\textwidth]{cfg-SimpleBonusScore}
+    \caption{{\cfg}สำหรับ{\class}คำนวณคะแนนพิเศษ}
+    \label{fig:cfgSimpleBonusScore}
+\end{figure}
+
+\begin{figure}[ht!]
+    \centering
+    \centering
+    \includegraphics[width=0.7\textwidth]{cfg-SimpleGrading}
+    \caption{{\cfg}สำหรับ{\class}คำนวณเกรดของนิสิต}
+    \label{fig:cfgSimpleGrade}
+\end{figure}
+
+\subsubsection{การวิเคราะห์พารามิเตอร์และการคืนค่าของ{\method} (5.2)}
+
+แนวทางในขั้นตอนนี้จะนำ{\TestPath}ที่ได้คัดเลือกไว้ในขั้นตอนก่อนหน้านี้ (ซึ่งในที่นี้คือ\tabpageref{tab:testPath}) มาพิจารณาข้อมูลนำเข้า
+และพารามิเตอร์ของแต่ละ{\method}ที่มีการเรียกผ่านกัน โดยจะเริ่มพิจารณาที่{\PredicateNode}ที่อยู่ในลำดับท้ายสุดของ{\TestPath}ก่อนเสมอ 
+แล้วจึงนำเงื่อนไขการสร้างข้อมูลของทั้งเส้นทางมากำหนดกรอบสำหรับการสร้างข้อมูล 
+ยกตัวอย่างเช่น {\TestPath}สำหรับ{\class} \code{SimpleGrading} (\tabpageref{tab:testPath}) พบว่ามี{\PredicateNode} ณ {\Node} 19
+{\TestPath} มีเงื่อนไข student\_score < SCORE\_MINIMUM\_STATISFIED หรือ student\_score < 80 
+
+นอกจากนั้นแล้วยังพบ{\PredicateNode}ใน{\TestPath}ของ \code{SimpleBonusScore} นั้น
+พบว่ามี{\PredicateNode} ณ {\Node} 8, 9 และ 11 ซึ่งมีเงื่อนไข ดังนี้
+
+\begin{enumerate}
+    \item[8:] \code{bonus\_score > 0} \label{itm:bonusscore}
+    \item[9:] \code{student\_score <= 50} \label{itm:studentscore}
+    \item[11:] \code{this.quiz.getQuizScore(student\_id) < 20} \label{itm:studentid}
+\end{enumerate}
+
+เมื่อนำเงื่อนไขทั้งหมดมาพิจารณาร่วมกันจะได้ว่า
+\begin{table}[ht!]
+    \centering
+    \caption{เงื่อนไขที่พบทั้งหมดบน{\TestPath}}
+    \label{tab:caseIllustrate}
+    \begin{tabular}{|l|c|c|}
+        \hline
+                                & \code{student\_score} & \code{bonus\_score} \\ \hline
+        \code{SimpleGrading}    & < 80                  & - \\ \hline
+        \code{SimpleBonusScore} & >= 50                 & > 0 \\ \hline
+    \end{tabular}
+\end{table}
+
+% 
+% 
+% ซึ่งจากเงื่อนไขด้านบนสามารถสร้างข้อมูลนำเข้าได้ คือ {\bf "bonus\_score = 0"} และ {\bf "student\_score = 50"} โดยเงื่อนไขใน{\Node}ที่ 11 
+% นั้น{\method} \code{getQuizScore} จำเป็นต้องสุ่มข้อมูลเพื่อป้อนให้กับ \code{student\_id} โดยนำเข้อมูล
+% 
+% บน{\TestPath}นี้มีเงื่อนไข student\_score < SCORE\_MINIMUM\_STATISFIED หรือ student\_score < 80 
+
+\subsubsection{สุ่มข้อมูลนำเข้าสำหรับเมธอด (5.3)}
+
+สำหรับแนวทางการดำเนินงานในขั้นตอนนี้จะรับกรอบการการสร้างข้อมูลนำเข้าจากกระบวนการก่อนหน้าเพื่อนำมาสร้างข้อมูลทดสอบ 
+หากมีพารามิเตอร์ที่ไม่ปรากฎใน{\TestPath}เป็นข้อมูลนำเข้า ให้คำนวณหาค่าความน่าจะเป็นที่จะนำค่าคงที่ที่ได้จากขั้นตอนการ 
+{\bf ทำเหมืองข้อมูลค่าคงที่ (2)} มาร่วมสร้างเป็นข้อมูลนำเข้าแทน จากตัวอย่างข้างต้น สามารถกำหนดกรอบ การสร้างข้อมูลนำเข้าสำหรับตัวแปร 
+\code{student\_score} และเมื่อพิจารณาจากประเภทข้อมูลของ \code{student\_score} ได้ว่า ค่าที่สุ่มขึ้นมาได้นั้นต้องเป็นจำนวนเต็ม (Integer) 
+ซึ่งอยู่ระหว่าง 50 - 79 และ \code{bonus\_score} จะต้องเป็นจำนวนเต็มที่มีค่ามากกว่าหรือเท่ากับ 0 เสมอ
+
+สำหรับข้อมูลนำเข้าที่ไม่ปรากฎใน{\PredicateNode}บน{\TestPath}นั้นจะใช้การสุ่มค่าโดยใช้ค่าคงที่ที่ได้จากขั้นตอน {\bf ทำเหมืองข้อมูลค่าคงที่ (A)} 
+เป็นข้อมูลเบื้องต้นในการสุ่มค่า 
+
+กำหนดให้ค่าที่สุ่มได้ออกมาเป็นดัง \tabpageref{tab:GRTRandom}
+
+\begin{table}[ht!]
+    \centering
+    \caption{ข้อมูลนำเข้าที่สุ่มได้}
+    \label{tab:GRTRandom}
+    \begin{tabular}{|l|c|c|}
+        \hline
+        ตัวแปร                    & ประเภทข้อมูล   & ค่าที่สุ่มได้          \\ \hline
+        \code{student\_score}    & {\it int}    & {\bf 65}         \\ \hline
+        \code{bonus\_score}      & {\it int}    & {\bf 42}         \\ \hline
+        \code{student\_id}       & {\it String} & {\bf "IUUUSISS"} \\ \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+\subsubsection{สร้างกรณีทดสอบ (5.4)}
+
+ในขั้นตอนนี้จะนำข้อมูลนำเข้าที่สร้างจากกระบวนการก่อนหน้ามาสร้างกรณีทดสอบสำหรับภาษาจาวา ดังตัวอย่างด้านล่าง
+
+\begin{figure}[hbt!]
+    \lstset{basicstyle=\small,style=thesiscodestyle}
+    \lstinputlisting[language=java]{methodology/SimpleGradingTest.java}
+    \caption{กรณีทดสอบที่สร้างขึ้นจากข้อมูลทดสอบ}
+    \label{fig:junitGradingTest}
+\end{figure}
+
+\subsection{การปรับค่าความคาดหวัง (6)}
+
+\subsection{การทดสอบซอฟต์แวร์ (7)}
+
+\subsection{เปรียบเทียบผลลัพธ์การดำเนินงาน (8)}
+
