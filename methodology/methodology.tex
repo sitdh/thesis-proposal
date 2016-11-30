@@ -54,7 +54,7 @@
             \item การเรียกใช้งานระหว่าง{\CUT}และชุดคำสั่งภายนอก (3$^{rd}$ party library) \label{ord:scg3rd}
         \end{enumerate}
         ซึ่งในแนวทางการดำเนินงานนี้จะสนใจเฉพาะ{\scg}ของ{\CUT}เท่านั้น ดังนั้นในขั้นตอนนี้ไม่สนใจกราฟที่เกิดจากการเรียกใช้ในข้อ \ref{ord:scgjdk} 
-        และ \ref{ord:scg3rd} ตลอดจนกราฟที่เกิดจากการสร้างวัตถุใหม่ เพื่อให้ได้{\scg}เฉพาะ{\CUT} ดังเช่น \figpageref{fig:subscggrading}
+        และ \ref{ord:scg3rd} ตลอดจนกราฟที่เกิดจากการสร้างวัตถุใหม่ เพื่อให้ได้{\scg}เฉพาะ{\CUT} ดังเช่น \figpageref{fig:scggrading}
 
     \item {\bf สร้าง{\cfg}} โดยจะอ่านข้อมูลของ{\CUT}นำมาสร้าง{\cfg}และจัดเก็บข้อมูลไว้ภายในฐานข้อมูล
 \end{enumerate}
@@ -65,11 +65,11 @@
 \subsubsection{การแทรกชุดคำสั่ง (4)}
 
 เนื่องจากว่าการทดสอบนี้จำเป็นต้องครอบคลุม{\Path}ระหว่าง{\CUT} ดังนั้นจำเป็นจะต้องแทรกชุดคำสั่งใน{\sourcecode}ในแต่ละขั้นตอนการทำงาน 
-(Code instrumentate) จากนั้นจึงนำ{\sourcecode}ที่ผ่านการแทรกชุดคำสั่งเรียบกร้อยแล้วไปใช้ในกระบวนการทดสอบ 
+(Code instrument) จากนั้นจึงนำ{\sourcecode}ที่ผ่านการแทรกชุดคำสั่งเรียบร้อยแล้วไปใช้ในกระบวนการทดสอบ 
 แล้วจึงจัดเก็บผลลัพธ์ที่ได้ระหว่างขั้นตอนการทดสอบ เพื่อนำมาเปรียบเทียบกับ{\TestPath}ที่เลือก
 
 \begin{figure}[hbt!]
-    \lstset{basicstyle=\tiny,style=thesiscodestyle}
+    \lstset{basicstyle=\small,style=thesiscodestyle}
     \lstinputlisting[language=java]{methodology/SimpleBonusScoreInstrumented.java}
     \caption{{\class} \code{SimpleBonusScoreInstrumented}}
     \label{fig:javaBonusScoreInstrumented}
@@ -85,7 +85,7 @@
 
 การดำเนินงานวิจัยในครั้งนี้จะนำข้อมูลกราฟ (3) ซึ่งประกอบไปด้วยข้อมูล {\it {\scg} (ค)} ร่วมกับ{\it {\cfg} (ง)} ใช้เป็นข้อมูลเริ่มต้นสำหรับการหา{\TestPath}
 ระหว่าง{\CUT} อย่างน้อย 1 เส้นทางระหว่าง{\class} แล้วจึงสร้างข้อมูลนำเข้าโดยพิจารณาจาก{\PredicateNode}ที่ปรากฎบน{\TestPath}ที่เลือก 
-สุดท้ายจีงนำข้อมูลทั้งหมดที่ได้สร้างเป็นชุดกรณีทดสอบ โดยมีภาพรวมการดำเนินงานดัง {\figpageref{fig:testcaseGenerationActivity}}
+สุดท้ายจึงนำข้อมูลทั้งหมดที่ได้สร้างเป็นชุดกรณีทดสอบ โดยมีภาพรวมการดำเนินงานดัง {\figpageref{fig:testcaseGenerationActivity}}
 
 \begin{figure}[ht!]
     \centering
@@ -135,8 +135,8 @@
 \end{enumerate}
 
 เมื่อพิจารณา{\cfg}ของ{\class}\ \code{SimpleGrading} และ \code{SimpleBonusScore} ดัง{\figpageref{fig:cfgSimpleGrade} 
-และ\figpageref{fig:cfgSimpleBonusScore} ตามลำดับ พบว่า\code{SimpleGrading} ได้เรียกใช้งาน{\method} \code{score} ของ\class 
-\code{SimpleBonusScore} ที่{\Node} 18 เรียบร้อยแล้ว จึงเลือก{\TestPath}ที่สั้นที่สุดภายใน {\code{SimpleGrade}} นั่นคือ 
+และ\figpageref{fig:cfgSimpleBonusScore} ตามลำดับ พบว่า\code{SimpleGrading} ได้เรียกใช้งาน{\method} \code{score} ของ\class\ 
+\code{SimpleBonusScore}\ ที่{\Node} 18 เรียบร้อยแล้ว จึงเลือก{\TestPath}ที่สั้นที่สุดภายใน {\code{SimpleGrade}} นั่นคือ 
 17\ \textendash\ 18\ \textendash\ 19\ \textendash\ 20 \textendash\ 25\ \textendash\ 26 
 
 ถัดมาจึงพิจารณา{\TestPath}ระหว่าง \code{SimpleBonusScore} และ \code{SimpleQuiz} ณ ตำแหน่งที่พบการเรียกใช้งาน \code{getQuizScore}
@@ -144,7 +144,7 @@
 \textendash\ 9\ \textendash\ 10\ \textendash\ 11\ \textendash\ 12\ \textendash\ 13\ \textendash\ 14\ \textendash\ 21\ 
 \textendash\ 22\ \textendash\ 24 
 
-โดยมี{\it {\TestPath} (ฉ)} ที่เลือก ดัง\tablename\ \tabpageref{tab:testPath}
+โดยมี{\it {\TestPath} (ฉ)} ที่เลือก ดัง\tabpageref{tab:testPath}
 
 \begin{table}[ht!]
     \centering
@@ -153,8 +153,9 @@
     \begin{tabular}{|l|l|}
         \hline
         \code{SimpleGrading}    & 17\ \textendash\ 18\ \textendash\ 19\ \textendash\ 20 \textendash\ 25\ \textendash\ 26 \\ \hline
-        \code{SimpleBonusScore} & 6\ \textendash\ 7\ \textendash\ 8\ \textendash\ 9\ \textendash\ 10\ \textendash\ 11\ \textendash\ 
-                                    12\ \textendash\ 13\ \textendash\ 14\ \textendash\ 21\ \textendash\ 22\ \textendash\ 24  \\ \hline
+        \code{SimpleBonusScore} & {\small 6\ \textendash\ 7\ \textendash\ 8\ \textendash\ 9\ \textendash\ 10\ \textendash\ 
+                                    11\ \textendash\ 12\ \textendash\ 13\ \textendash\ 14\ \textendash\ 21\ \textendash\ 
+                                    22\ \textendash\ 23\ \textendash\ 24}  \\ \hline
     \end{tabular}
 \end{table}
 
@@ -217,7 +218,7 @@
 หากมีพารามิเตอร์ที่ไม่ปรากฎใน{\TestPath}เป็นข้อมูลนำเข้า ให้คำนวณหาค่าความน่าจะเป็นที่จะนำค่าคงที่ที่ได้จากขั้นตอนการ 
 {\bf ทำเหมืองข้อมูลค่าคงที่ (2)} มาร่วมสร้างเป็นข้อมูลนำเข้าแทน จากตัวอย่างข้างต้น สามารถกำหนดกรอบ การสร้างข้อมูลนำเข้าสำหรับตัวแปร 
 \code{student\_score} และเมื่อพิจารณาจากประเภทข้อมูลของ \code{student\_score} ได้ว่า ค่าที่สุ่มขึ้นมาได้นั้นต้องเป็นจำนวนเต็ม (Integer) 
-ซึ่งอยู่ระหว่าง 50 - 79 และ \code{bonus\_score} จะต้องเป็นจำนวนเต็มที่มีค่ามากกว่าหรือเท่ากับ 0 เสมอ
+ซึ่งอยู่ระหว่าง 50 - 79 และ \code{bonus\_score} จะต้องเป็นจำนวนเต็มที่มีค่ามากกว่า 0 เสมอ
 
 สำหรับข้อมูลนำเข้าที่ไม่ปรากฎใน{\PredicateNode}บน{\TestPath}นั้นจะใช้การสุ่มค่าโดยใช้ค่าคงที่ที่ได้จากขั้นตอน {\bf ทำเหมืองข้อมูลค่าคงที่ (A)} 
 เป็นข้อมูลเบื้องต้นในการสุ่มค่า 
@@ -267,7 +268,7 @@
 
 \subsection{การทดสอบซอฟต์แวร์ (7)}
 
-แนวทางการดำเนินงานในขั้นตอนนี้จะรับ {\it ชุดกรณีทดสอบ (ญ)} เข้าทดสอบร่วมกับ{\sourcecode}ที่ผ่านการแทรกคำสั่ง (จ) จากฐานข้อมูล (A) 
+แนวทางการดำเนินงานในขั้นตอนนี้จะรับ {\it ชุดกรณีทดสอบ (ญ)} เข้าทดสอบร่วมกับ{\sourcecode}ที่ผ่าน{\it การแทรกคำสั่ง (จ)} จาก{\it ฐานข้อมูล (A)} 
 และรวบรวมข้อมูลที่เกิดจากชุดคำสั่งที่แทรกไว้ ซึ่งปรากฎขึ้นระหว่างการทดสอบเข้าไว้ด้วยกันเป็น {\it ผลลัพธ์การทดสอบซอฟต์แวร์ (ฎ)} 
 เพื่อใช้ตรวจสอบให้แน่ใจว่ากรณีทดสอบนั้นสามารถทดสอบ{\TestPath}ที่เลือกได้ 
 
