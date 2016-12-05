@@ -2,7 +2,7 @@
 
 งานวิจัยนี้นำเสนอวิธีการสร้างกรณีทดสอบและข้อมูลทดสอบสำหรับ{\TestPath}ระหว่าง{\CUT}อย่างน้อย 1 เส้นทาง 
 บน{\StaticInformation}จาก{\sourcecode}ภาษาจาวาตามที่ผู้ทดสอบสนใจ โดยมีภาพรวมการดำเนินงานวิจัย 
-ดัง\figpageref{fig:methodologyoverview} ซึ่งมีแนวทางการดำเนินงานดังนี้
+ดัง\figref{fig:methodologyoverview} ซึ่งมีแนวทางการดำเนินงานดังนี้
 
 \begin{sidewaysfigure}
     \centering
@@ -54,7 +54,7 @@
             \item การเรียกใช้งานระหว่าง{\CUT}และชุดคำสั่งภายนอก (3$^{rd}$ party library) \label{ord:scg3rd}
         \end{enumerate}
         ซึ่งในแนวทางการดำเนินงานนี้จะสนใจเฉพาะ{\scg}ของ{\CUT}เท่านั้น ดังนั้นในขั้นตอนนี้ไม่สนใจกราฟที่เกิดจากการเรียกใช้ในข้อ \ref{ord:scgjdk} 
-        และ \ref{ord:scg3rd} ตลอดจนกราฟที่เกิดจากการสร้างวัตถุใหม่ เพื่อให้ได้{\scg}เฉพาะ{\CUT} ดังเช่น \figpageref{fig:scggrading}
+        และ \ref{ord:scg3rd} ตลอดจนกราฟที่เกิดจากการสร้างวัตถุใหม่ เพื่อให้ได้{\scg}เฉพาะ{\CUT} ดังเช่น \figref{fig:scggrading}
 
     \item {\bf สร้าง{\cfg}} โดยจะอ่านข้อมูลของ{\CUT}นำมาสร้าง{\cfg}และจัดเก็บข้อมูลไว้ภายในฐานข้อมูล
 \end{enumerate}
@@ -75,7 +75,7 @@
     \label{fig:javaBonusScoreInstrumented}
 \end{figure}
 
-จากตัวอย่าง\figpageref{fig:javaBonusScoreInstrumented} เป็น{\sourcecode}ที่สืบเนื่องมาจาก\figpageref{fig:javaBonusScore}
+จากตัวอย่าง\figref{fig:javaBonusScoreInstrumented} เป็น{\sourcecode}ที่สืบเนื่องมาจาก\figref{fig:javaBonusScore}
 แต่ต่างกันโดยแทรกชุดคำสั่งเข้าไปภายใน{\sourcecode} ณ บรรทัดที่ 5, 10, 13 และบรรทัดที่ 18 ซึ่งการแทรกชุดคำสั่งในกระบวนการนี้จะสนใจเพียงแค่{\CUT} เท่านั้น
 
 เมื่อเสร็จสิ้นกระบวนการแทรกชุดคำสั่ง จะนำ{\sourcecode}ที่ได้จัดเก็บไว้ใน {\it ฐานข้อมูล (A)} เพื่อจัดเตรียมไว้สำหรับนำไปทดสอบอีกครั้ง
@@ -85,7 +85,7 @@
 
 การดำเนินงานวิจัยในครั้งนี้จะนำข้อมูลกราฟ (3) ซึ่งประกอบไปด้วยข้อมูล {\it {\scg} (ค)} ร่วมกับ{\it {\cfg} (ง)} ใช้เป็นข้อมูลเริ่มต้นสำหรับการหา{\TestPath}
 ระหว่าง{\CUT} อย่างน้อย 1 เส้นทางระหว่าง{\class} แล้วจึงสร้างข้อมูลนำเข้าโดยพิจารณาจาก{\PredicateNode}ที่ปรากฎบน{\TestPath}ที่เลือก 
-สุดท้ายจึงนำข้อมูลทั้งหมดที่ได้สร้างเป็นชุดกรณีทดสอบ โดยมีภาพรวมการดำเนินงานดัง {\figpageref{fig:testcaseGenerationActivity}}
+สุดท้ายจึงนำข้อมูลทั้งหมดที่ได้สร้างเป็นชุดกรณีทดสอบ โดยมีภาพรวมการดำเนินงานดัง {\figref{fig:testcaseGenerationActivity}}
 
 \begin{figure}[ht!]
     \centering
@@ -99,10 +99,10 @@
 
 ในขั้นตอนนี้จะพิจารณาจากข้อมูล{\it \scg (ก)} ร่วมกับ {\it \cfg (ข)} เพื่อเลือก{\TestPath}ที่ยาวที่สุดที่จะเป็นไปได้ใน{\scg} 
 ในกรณีที่ระหว่าง{\CUT}นั้นมี{\Path}เชื่อมต่อกันมากกว่า 1 {\Path} จะกำหนดน้ำหนักให้กับ{\Edge}ของ{\scg} โดยพิจารณาจากจำนวนการเรียกใช้งานที่พบภายใน{\cfg} 
-ตัวอย่างเช่น ระหว่าง\class\ \figpageref{fig:javaQuiz} และ\figpageref{fig:javaBonusScore} นั้นพบการเชื่อมต่อระหว่างกัน 2 {\method} นั่นคือ
+ตัวอย่างเช่น ระหว่าง\class\ \figref{fig:javaQuiz} และ\figref{fig:javaBonusScore} นั้นพบการเชื่อมต่อระหว่างกัน 2 {\method} นั่นคือ
 \code{getQuizScore} และ\ \code{getQuizSum} แต่จากการพิจารณาใน{\sourcecode}พบว่า{\class}\ \code{SimpleBonusScore} นั้นเรียกใช้งาน\method
 \code{getQuizScore} รวมทั้งสิ้น 2 ครั้ง ในขณะที่มีการเรียกใช้งาน \code{getQuizSum} เพียง 1 ครั้ง ดังนั้นจะได้{\scg}ที่ถ่วงน้ำหนักบน{\Edge}เรียบร้อยแล้วดัง 
-\figpageref{fig:scgWeightedEdge}
+\figref{fig:scgWeightedEdge}
 
 ซึ่งจะได้{\scg}ของทั้ง 3 {\class}นี้เป็น
 
@@ -125,7 +125,7 @@
 \end{figure}
 
 ดังนั้น {\TestPath}ที่เลือกระหว่าง \code{SimpleBonusScore} และ \code{SimpleQuiz} คือ{\Path}ที่\class\ \code{SimpleBonusScore} 
-เรียกใช้งาน{\method}\ \code{getQuizeScore} ดัง\figpageref{fig:scgWeightedEdgeTestPathSelected} ซึ่งมีแนวทางการเลือก{\TestPath} ดังนี้
+เรียกใช้งาน{\method}\ \code{getQuizeScore} ดัง\figref{fig:scgWeightedEdgeTestPathSelected} ซึ่งมีแนวทางการเลือก{\TestPath} ดังนี้
 
 \begin{enumerate}
     \item ให้น้ำหนักในทิศทางที่มุ่งไปยัง{\Node} ซึ่งพบการเรียกใช้งานระหว่าง{\class}ตามที่กำหนดไว้จาก{\scg}มากที่สุดเสมอ
@@ -134,8 +134,8 @@
     \item เลือก{\TestPath}ไปยังทิศที่ทำให้{\PredicateNode}มีค่าความจริงเป็นจริงก่อนเสมอ
 \end{enumerate}
 
-เมื่อพิจารณา{\cfg}ของ{\class}\ \code{SimpleGrading} และ \code{SimpleBonusScore} ดัง{\figpageref{fig:cfgSimpleGrade} 
-และ\figpageref{fig:cfgSimpleBonusScore} ตามลำดับ พบว่า\code{SimpleGrading} ได้เรียกใช้งาน{\method} \code{score} ของ\class\ 
+เมื่อพิจารณา{\cfg}ของ{\class}\ \code{SimpleGrading} และ \code{SimpleBonusScore} ดัง{\figref{fig:cfgSimpleGrade} 
+และ\figref{fig:cfgSimpleBonusScore} ตามลำดับ พบว่า\code{SimpleGrading} ได้เรียกใช้งาน{\method} \code{score} ของ\class\ 
 \code{SimpleBonusScore}\ ที่{\Node} 18 เรียบร้อยแล้ว จึงเลือก{\TestPath}ที่สั้นที่สุดภายใน {\code{SimpleGrade}} นั่นคือ 
 17\ \textendash\ 18\ \textendash\ 19\ \textendash\ 20 \textendash\ 25\ \textendash\ 26 
 
@@ -255,7 +255,7 @@
 
 แนวทางการดำเนินงานในขั้นตอนนี้จะเป็นการปรับค่าข้อมูลที่อยู่ภายในกรณีทดสอบที่ได้รับโดยนักทดสอบซอฟต์แวร์ เพื่อให้กรณีทดสอบนั้นสอดคล้องกับการทำงานที่ควรจะเป็นของโปรแกรม
 มากที่สุด เนื่องจากการวิจัยครั้งนี้ยังไม่รองรับการวิเคราะห์ค่าผลลัพธ์ที่ได้จากการดำเนินงานของ{\method} ยกตัวอย่างเช่นกรณีทดสอบที่ได้จากขั้นตอนที่ 5.4 
-ดัง \figpageref{fig:junitGradingTest} เมื่อได้ปรับการปรับค่าความคาดหวังจากนักทดสอบซอฟต์แวร์แล้วจะได้เป็นดัง{\figpageref{fig:junitGradingTestRefined}
+ดัง \figref{fig:junitGradingTest} เมื่อได้ปรับการปรับค่าความคาดหวังจากนักทดสอบซอฟต์แวร์แล้วจะได้เป็นดัง{\figref{fig:junitGradingTestRefined}
 ซึ่งในที่นี้นักทดสอบซอฟต์แวร์ได้ปรับค่าในบรรทัดที่ 5 โดยเปลี่ยนจาก \code{"IUUUSISS"} ให้เป็นค่า \code{"5873000021"} 
 และบรรทัดที่ 6 คือค่า \code{"lorem"} เป็นค่า \code{"U"} จะได้ตัวอย่างของ {\it กรณีทดสอบพร้อมใช้งาน (ญ)} ดังนี้
 
