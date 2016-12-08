@@ -8,3 +8,5 @@ q.tex
 *.bcf
 *.run.xml
 *.pdf
+*.loc
+*.soc
