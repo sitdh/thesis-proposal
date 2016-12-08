@@ -36,6 +36,16 @@
 % Graphic
 \usepackage{tikz}
 
+% - - - - - - - - - - - - - - - - - - - -
+% Edit tracking
+\usepackage[draft,addedmarkup=sl,deletedmarkup=sout]{changes}
+% \ifx\pdfoutput\undefined
+% \else\ifnum\pdfoutput>0
+%     \usepackage{pdfcolmk}
+% \fi\fi
+% \cbcolor{red}
+\definechangesauthor[name={สิทธิพงษ์ เหล่าโก้ก}, color=red]{sitdh}
+
 \titleformat{\section}{\bfseries}{\thesection}{0.4em}{}
 \titleformat{\subsection}{\bfseries}{\thesubsection}{0.4em}{}
 \titleformat{\subsubsection}{\bfseries}{\thesubsubsection}{0.4em}{}
