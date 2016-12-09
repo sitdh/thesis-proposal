@@ -34,6 +34,11 @@
 \usepackage{tikz}
 
 % - - - - - - - - - - - - - - - - - - - -
+% Nested enum
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+
+% - - - - - - - - - - - - - - - - - - - -
 % Misc config.
 
 \titleformat{\section}{\bfseries}{\thesection}{0.4em}{}
