@@ -22,11 +22,8 @@
 % Code listing
 \usepackage{fontspec}
 \setmonofont{Inconsolata}
-% \setmonofont{Monaco}
-
-% - - - - - - - - - - - - - - - - - - - -
-% Code listing
 \usepackage{verbatim}
+\usepackage{lmodern}
 
 % - - - - - - - - - - - - - - - - - - - -
 % Equation
@@ -37,14 +34,7 @@
 \usepackage{tikz}
 
 % - - - - - - - - - - - - - - - - - - - -
-% Edit tracking
-\usepackage[draft,addedmarkup=sl,deletedmarkup=sout]{changes}
-% \ifx\pdfoutput\undefined
-% \else\ifnum\pdfoutput>0
-%     \usepackage{pdfcolmk}
-% \fi\fi
-% \cbcolor{red}
-\definechangesauthor[name={สิทธิพงษ์ เหล่าโก้ก}, color=red]{sitdh}
+% Misc config.
 
 \titleformat{\section}{\bfseries}{\thesection}{0.4em}{}
 \titleformat{\subsection}{\bfseries}{\thesubsection}{0.4em}{}
@@ -60,7 +50,9 @@
     tabsize=2,
     breaklines=true,
     showspaces=false,
-    numbers=left
+    numbers=left,
+    basicstyle=\tiny,
+    language=Java
 }
 
 \def\@vpt{12}
