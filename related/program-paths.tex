@@ -11,7 +11,6 @@
 \subsubsection{\FirstTimeDefine{\cfg}{\cfgen}}
 \label{sec:sub:sub:cfg}
 
-% หากกำหนดให้{\software} ด้วย\FirstTimeDefine{\DirectedGraph}{\DirectedGraphEN} 
 หากแทน{\software} \code{P} แทนด้วยกราฟ \code{G} จะได้ว่า \code{G = (V, A)} เมื่อ \code{V (Vertex)} 
 คือเซตของ{\Node}ในกราฟ ซึ่งแต่ละ{\Node}แทนแถวคำสั่งใน{\sourcecode} และ \code{A\ (Arcs)} 
 คือเซตของคู่ลำดับโหนดที่มีความสัมพันธ์กันภายในกราฟซึ่งเชื่อมต่อกันแบบมีทิศทาง หาก \code{(v_m, v_n) \in A} จะหมายถึง 
@@ -130,21 +129,21 @@
     \end{tabular}
 \end{table}
 
-\begin{figure}[ht!]
+\begin{figure}[htb!]
     \lstset{basicstyle=\small,style=thesiscodestyle,language=java}
     \lstinputlisting[language=Java]{related/SimpleQuiz.java}
     \caption{{\sourcecode}ภาษาจาวาสำหรับอ่านคะแนนคำถามภายในชั้นเรียน}
     \label{fig:javaQuiz}
 \end{figure}
 
-\begin{figure}[ht!]
+\begin{figure}[htb!]
     \lstset{basicstyle=\small,style=thesiscodestyle,language=java}
     \lstinputlisting[language=Java]{related/SimpleBonusScore.java}
     \caption{{\sourcecode}ภาษาจาวาสำหรับคำนวนคะแนนเพิ่มพิเศษ}
     \label{fig:javaBonusScore}
 \end{figure}
 
-\begin{figure}[ht!]
+\begin{figure}[htb!]
     \lstset{basicstyle=\small,style=thesiscodestyle}
     \lstinputlisting[language=Java]{related/SimpleGrading.java}
     \caption{{\sourcecode}ภาษาจาวาสำหรับคำนวณเกรดนิสิต}
@@ -156,6 +155,7 @@
 จะสามารถสร้าง{\scg}เพื่ออธิบายความสัมพันธ์ของ{\class}ทั้ง 3 นี้ได้ดัง \figref{fig:scggrading} 
 โดยมี{\method}ต้นทางที่เรียกใช้งานและ{\method}ปลายทางที่ถูกเรียกใช้ เป็นป้ายกำกับ
 
+\clearpage
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.8\textwidth]{simple-static-call-graph}
@@ -168,14 +168,14 @@
 
 \InfeasiblePath คือ ทางเดินที่ไม่สามารถหาค่าทุก ๆ ความเป็นไปได้ซึ่งสอดคล้องกับ{\PredicateNode}ที่อยู่บนทางเดินนั้น 
 เพื่อทำให้โปรแกรมทำงานบนเส้นทางนั้นได้ \cite{Naik2008} หากพิจารณาจากชุดรหัสเทียมใน{\figref{fig:pseudocodeGrading}} 
-และกราฟใน{\figref{fig:programGraph}} ประกอบเข้าด้วยกัน จะพบว่าทางเดิน 
-\code{\overline{12}\ \textendash\ 14\ \textendash\ 15 \textendash\ 18 \textendash\ 19} คือ {\bf \InfeasiblePath} 
+และกราฟใน\figref{fig:programGraph} ประกอบเข้าด้วยกัน จะพบว่าทางเดิน 
+\code{\overline{12}\ - 14\ - 15 - 18 - 19} คือ {\bf \InfeasiblePath} 
 ดังแสดงใน{\figref{fig:infeasiblePath}} เนื่องจากไม่สามารถหาค่าที่สอดคล้อง กับ\PredicateNode\ 12 และ 14 
 นั่นคือ \code{student\_score \geq 80} และ \code{student\_score = 0} ได้ในทุก ๆ กรณี
 
-\begin{figure}[t!]
+\begin{figure}[hbt!]
     \centering
-    \includegraphics[width=0.5\textwidth]{grading-program-graph-subgraph}
+    \includegraphics[width=0.4\textwidth]{grading-subgraph-infeasible-path}
     \caption{โครงสร้างของโปรแกรมที่พบ{\InfeasiblePath}}
     \label{fig:infeasiblePath}
 \end{figure}
@@ -184,35 +184,4 @@
 ดังนั้นการทดสอบโปรแกรมนั้นจึงจำเป็นจะต้องวิเคราะห์{\InfeasiblePath}ที่อยู่ภายในโครงสร้างของโปรแกรมเพื่อรายงานผลให้นักพัฒนาได้ทราบและแก้ไข
 ต่อไปได้
 
-% \subsection{\FirstTimeDefine{\Cyclomatic}{\CyclomaticEN}}
-% 
-% ในการวัดความซับซ้อนเชิงโครงสร้างของโปรแกรมนั้น McCabe ได้กำหนด \Cyclomatic\ \cite{McCabe1976}\ 
-% ไว้เพื่อเป็นมาตรวัดความซับซ้อนของโปรแกรม โดยใช้การพิจารณาจากจำนวน\Node\ \Edge และ\PredicateNode\ ที่ประกอบกันภายใน\ProgramGraph\ 
-% ดัง\eq{eq:complexitymeasureStronglyConnected} และ \eq{eq:complexitymeasure}
-% 
-% \begin{align}
-%     v(G) &= e - n + p \label{eq:complexitymeasureStronglyConnected} \\
-%     v(G) &= e - n + 2p \label{eq:complexitymeasure} 
-% \end{align}
-% 
-% \begin{table}[ht!]
-%     \begin{tabular}{lcl}
-%     เมื่อ & $v(G)$    & คือ ค่า{\Cyclomatic}ที่คำนวณได้               \\
-%         & $e$       & คือ จำนวน{\Edge}ใน\ProgramGraph            \\
-%         & $n$       & คือ จำนวน{\Node}ใน\ProgramGraph            \\
-%         & $p$       & คือ จำนวนพื้นที่ที่เชื่อมต่อกันใน\ProgramGraph   \\
-%     \end{tabular}
-% \end{table}
-% 
-% โดยที่ \eq{eq:complexitymeasureStronglyConnected} จะใช้กับกราฟที่เชื่อมต่อกันแบบเข้ม (Strongly connected graph) 
-% นั่นคือกราฟนั้นจะต้องมีทางเดินจาก $n_j$ ไปยัง $n_k$ เสมอ แต่หากไม่ใช่แล้วจะใช้ \eq{eq:complexitymeasure} โดยจะกำหนดให้ 
-% $p = 1$ จาก{\ProgramGraph}ใน{\figref{fig:programGraph}} ซึ่งมี{\Edge}ทั้งสิ้น 23 เส้น และจำนวน{\Node}ทั้งสิ้น 
-% 18 \Node\ ดังนั้นหากคำนวนระดับความซับซ้อนตาม{\Cyclomatic}ของ{\ProgramGraph}นี้ จะได้ว่า
-% 
-% \begin{align*}
-%     v(G) &= e - n + 2p \\
-%          &= 23 - 18 + 2 \\
-%     v(G) &= 7 
-% \end{align*}
-% 
-% จากคำของ McCabe แล้วโปรแกรมไม่ควรมีค่า{\Cyclomatic}มากกว่า 15 โดยที่ค่าความซับซ้อนที่แนะนำอยู่ที่ 10 \cite{McCabe1976}
+\clearpage
