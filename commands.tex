@@ -1,6 +1,9 @@
 \newcommand{\FirstTimeDefine}[2]{#1\,(#2)}
 
-\newcommand{\code}[1]{\small{$#1$}}
+\newcommand*{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand*{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+
+\newcommand{\code}[1]{\Scale[0.7]{#1}}
 
 \newcommand{\figref}[1]{\figurename\ \ref{#1}\ }
 \newcommand{\figpageref}[1]{\figurename\ \ref{#1}\ (\pagename\ \pageref{#1})\ }
