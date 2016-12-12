@@ -12,9 +12,9 @@
 \label{sec:sub:sub:cfg}
 
 % หากกำหนดให้{\software} ด้วย\FirstTimeDefine{\DirectedGraph}{\DirectedGraphEN} 
-หากแทน{\software} \code{P} แทนด้วยกราฟ \code{G} จะได้ว่า \code{G = (V, E)} เมื่อ \code{V (Vertex)} 
-คือเซตของ{\Node}ในกราฟ ซึ่งแต่ละ{\Node}แทนแถวคำสั่งใน{\sourcecode} และ \code{E (Edge)} 
-คือเซตของคู่ลำดับโหนดที่มีความสัมพันธ์กันภายในกราฟซึ่งเชื่อมต่อกันแบบมีทิศทาง หาก \code{(v_m, v_n) \in E} จะหมายถึง 
+หากแทน{\software} \code{P} แทนด้วยกราฟ \code{G} จะได้ว่า \code{G = (V, A)} เมื่อ \code{V (Vertex)} 
+คือเซตของ{\Node}ในกราฟ ซึ่งแต่ละ{\Node}แทนแถวคำสั่งใน{\sourcecode} และ \code{A\ (Arcs)} 
+คือเซตของคู่ลำดับโหนดที่มีความสัมพันธ์กันภายในกราฟซึ่งเชื่อมต่อกันแบบมีทิศทาง หาก \code{(v_m, v_n) \in A} จะหมายถึง 
 "\Node\ \code{v_n} จะทำงานในลำดับถัดไปหลังจากที่ \code{v_m} ทำงานเสร็จสิ้น" \cite{Jorgensen2013} 
 โดยที่ \code{v_i, v_j \in V} มีโหนดซึ่งไม่มีดีกรีเข้า \code{(d^+(v_i) = 0)} เป็นโหนดเริ่มต้น (Source node) 
 และโหนดซึ่งไม่มีดีกรีออก \code{(d^-(v_j) = 0)} เป็นโหนดปลาย (Sink node) 
@@ -102,25 +102,33 @@
     \caption{กรณีทดสอบ}
     \label{tab:simpleTestCase}
     \begin{tabular}{|l|c|c|c|}
-    \hline
-    \rowcolor{LightGray}
-    Case ID     & bonus\_score  & student\_score    & Expected output \\
-    \hline
-    SC1         & 1             & 50                & U \\
-    \hline
+        \hline
+        \rowcolor{LightGray}
+        Case ID     & bonus\_score  & student\_score    & Expected output \\
+        \hline
+        SC1         & 1             & 50                & U \\
+        \hline
     \end{tabular}
 \end{table}
 
 \subsubsection{\FirstTimeDefine{\scg}{\scgEN}}
 
-การพัฒนาโปรแกรมเชิงวัตุ (Object-oriented programming: OOP) เป็นการรวมพฤติกรรม และความสามารถที่คล้ายคลึงกันเข้าไว้ด้วยกัน \cite{kindler2011}
-เป็น\FirstTimeDefine{\class}{\classEN} \FirstTimeDefine{\method}{\methodEN} และ \FirstTimeDefine{\attribute}{\attributeEN} 
-และเพื่อให้เข้าใจถึงการเกิดปฏิสัมพันธ์ซึ่งกันและกันระหว่าง{\class}ภายในซอฟต์แวร์ภายใต้การทดสอบ (Software under test: SUT) จาก{\sourcecode} 
-ที่ได้รับมานั้น จึงจำเป็นจะต้องพิจารณา{\sourcecode}แล้วจึงนำมาสร้างเป็น \FirstTimeDefine{\scg}{\scgEN} โดยที่{\scg} 
-นั้นจะใช้{\Node}แทน{\class}ทั้งหมด เชื่อมกันด้วย{\Edge}ที่กำกับด้วย{\method}ที่{\class}ใช้ปฏิสัมพันธ์กัน หากแปลง{\sourcecode}จาก
-\figref{fig:pseudocodeGrading} ให้เป็น{\sourcecode}ภาษาจาวา (Java) โดยแยกออกเป็น 3 \class\ ได้แก่ \code{SimpleQuiz} 
-ทำหน้าที่อ่านข้อมูลคำถามภายในชั้นเรียน \code{SimpleBonusScore} ทำหน้าที่คำนวณคะแนนเพิ่มพิเศษ และ \code{SimpleGrading} ทำหน้าที่คำนวณเกรดของนิสิต 
-ดัง \figref{fig:javaQuiz} \figref{fig:javaBonusScore} และ\figref{fig:javaGrading}ตามลำดับ
+การพัฒนา{\software}เชิงวัตุ (Object-oriented programming: OOP) เป็นการรวมพฤติกรรม และความสามารถที่คล้ายคลึงกันเข้าไว้ด้วยกัน \cite{kindler2011}
+ในลักษณะของ\FirstTimeDefine{\class}{\classEN} \FirstTimeDefine{\method}{\methodEN} และ \FirstTimeDefine{\attribute}{\attributeEN} 
+ดังนั้นหากต้องทำเข้าใจถึงการมีปฏิสัมพันธ์ซึ่งกันและกันระหว่าง{\class}ภายในซอฟต์แวร์ภายใต้การทดสอบ (Software under test: SUT) จาก{\sourcecode} 
+ที่ได้รับมานั้น{\scg}จึงเข้าช่วยแสดงความสัมพันธ์ในรูปแบบของ\FirstTimeDefine{\DirectedMultiGraph}{\DirectedMultiGraphEN}\ หากให้แทน{\software} \code{P} 
+แทนด้วยกราฟ \code{G} จึงสามารถเขียนความสัมพันธ์ในรูปของทูเปิ้ล 6 รายการ \code{G = (V, E, tail, head, \ell_V, \ell_E, \sigma, \delta)}
+
+\begin{table}[ht!]
+    \begin{tabular}{ll}
+        เมื่อ & \code{V} คือ เซตซึ่งมีสมาชิกจำกัดซึ่งเป็น{\Node}ภายในกราฟ \\
+            & \code{E} คือ เซตซึ่งมีสมาชิกจำกัดของ{\Edge} \\
+            & \code{tail:E \rightarrow V} คือ ฟังก์ชันซึ่งกำหนด{\Edge}ให้กับ{\Node}หาง (tail) \\
+            & \code{head:E \rightarrow V} คือ ฟังก์ชันซึ่งกำหนด{\Edge}ให้กับ{\Node}หัว (head) \\
+            & \code{\ell_V:V \rightarrow tail} คือ ฟังก์ชันที่กำหนดแผ่นป้ายให้กับ{\Node} \\
+            & \code{\ell_E:E \rightarrow head} คือ ฟังก์ชันที่กำหนดแผ่นป้ายให้กับ{\Edge} \\
+    \end{tabular}
+\end{table}
 
 \begin{figure}[ht!]
     \lstset{basicstyle=\small,style=thesiscodestyle,language=java}
@@ -143,12 +151,10 @@
     \label{fig:javaGrading}
 \end{figure}
 
-\clearpage
-จาก\figref{fig:javaGrading} เมื่อกำหนดให้ \code{Q} แทน\class\ \code{SimpleQuiz}, \code{G} แทน{\class} \code{SimpleGrading} 
-และ \code{B} แทน\class\ \code{SimpleBonusScore} โดยที่\class\ \code{SimpleGrading} เรียกใช้งาน{\method} \code{score} 
-ซึ่งเป็น{\method}ของ{\class} \code{SimpleBonusScore} ผ่าน{\method} {\code{grading}} ดังนั้น{\scg}สำหรับความสัมพันธ์นี้จะเป็นดัง
-{\figref{fig:scggrading}} ซึ่งในการพัฒนาจริงนั้น\class\ \code{SimpleGrading} และ\class\ \code{SimpleBonusScore}
-อาจมีการเรียกใช้งานระหว่างกันมากกว่า 1 \method % ดังที่ได้แสดงใน{\figref{fig:subactualscg}}
+หาก{\class} \code{SimpleQuiz}, \code{SimpleBonusScore} และ \code{SimpleGrading} ดังแสดงใน 
+\figref{fig:javaQuiz}, \ref{fig:javaBonusScore} และ \ref{fig:javaGrading} แทนด้วย \code{Q}, \code{B} และ \code{G} ตามลำดับ
+จะสามารถสร้าง{\scg}เพื่ออธิบายความสัมพันธ์ของ{\class}ทั้ง 3 นี้ได้ดัง \figref{fig:scggrading} 
+โดยมี{\method}ต้นทางที่เรียกใช้งานและ{\method}ปลายทางที่ถูกเรียกใช้ เป็นป้ายกำกับ
 
 \begin{figure}[htb!]
     \centering
