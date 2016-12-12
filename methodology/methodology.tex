@@ -165,28 +165,34 @@
 \code{G:19} เป็นจริง (\code{True}) และเงื่อนไข \code{S:8} เป็นเท็จ (\code{False})
 
 \subsubsection{\FirstTimeDefine{\randomTestData}{\randomTestDataEN}}
+\label{sec:sub:randomTestData}
 
 สำหรับแนวทางการดำเนินงานในขั้นตอนนี้จะรับเงื่อนไขการสร้าง{\testData}จากกระบวนการก่อนหน้าเพื่อนำมาสร้างข้อมูลทดสอบ 
 เพื่อให้กรณีทดสอบสามารถทดสอบ{\TestPath}ตามที่เลือกได้ ตามวิธีการที่กำหนด \cite{XING201491, Ma2016, Heaton2000} 
 หากมีพารามิเตอร์ที่ไม่ปรากฎใน{\TestPath}เป็นข้อมูลนำเข้า ให้คำนวณหาค่าความน่าจะเป็นที่จะนำค่าคงที่มาใช้ TF-IDF 
 (Term Frequency-Inverse Document Frequency: TF-IDF) \cite{Ma2016} 
 
+เมื่อพิจารณาข้อมูล\FirstTimeDefine{\MethodSignature}{\MethodSignatureEN} ของ{\method} \code{score} ของ{\class} \code{SimpleGrading} 
+พบว่า{\method}นี้ต้องการพารามิเตอร์ทั้งหมด 3 ค่า ด้วยกัน คือ \code{student\_id:String}, \code{student\_score:int} และ\code{bonus\_score:int} 
+แต่จากตัวแปรที่พบใน{\PredicateNode}นั้นจะมีเพียง \code{student\_score} และ\code{bonus\_score} 
+คงเหลือตัวแปร \code{student\_id} ที่จะใช้การคำนวณความคล้ายด้วยวิธี TF-IDF \cite{Ma2016}
 กำหนดให้ค่าที่สุ่ม{\it \randomTestData } ได้ออกมาเป็นดัง \tabpageref{tab:GRTRandom}
 
 \begin{table}[ht!]
     \centering
-    \caption{ข้อมูลนำเข้าที่สุ่มได้}
+    \caption{ตัวอย่าง{\randomTestData}ที่ได้}
     \label{tab:GRTRandom}
     \begin{tabular}{|l|c|c|}
         \hline
         ตัวแปร                    & ประเภทข้อมูล   & ค่าที่สุ่มได้          \\ \hline
-        \code{student\_score}    & {\it int}    & {\bf 65}         \\ \hline
-        \code{bonus\_score}      & {\it int}    & {\bf 42}         \\ \hline
+        \code{student\_score}    & {\it int}    & {\bf 75}         \\ \hline
+        \code{bonus\_score}      & {\it int}    & {\bf 0}         \\ \hline
         \code{student\_id}       & {\it String} & {\bf "IUUUSISS"} \\ \hline
     \end{tabular}
 \end{table}
 
-\subsubsection{สร้างกรณีทดสอบ (5.4)}
+\subsubsection{\FirstTimeDefine{\testcaseGeneration}{\testcaseGenerationEN}}
+\label{sec:sub:sub:tcGen}
 
 ในขั้นตอนนี้จะนำข้อมูลนำเข้าที่สร้างจากกระบวนการก่อนหน้ามาสร้างกรณีทดสอบสำหรับภาษาจาวา โดยใส่ค่าคาดหวัง (บรรทัดที่ 7) 
 จะเกิดจากการสุ่มโดยอิงตามประเภทข้อมูลที่{\method}นั้นคืนค่า ดังตัวอย่างของกรณีทดสอบภายใน {\it ชุดทดสอบ (ฌ)} ด้านล่าง
