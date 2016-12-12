@@ -55,9 +55,15 @@
     tabsize=2, numbers=left,
     breaklines=true, showspaces=false, showstringspaces=false,
     basicstyle=\listingsfont,
-    language=Java
+    language={Java},
+    commentstyle=\color{eclipseGreen},
+    keywordstyle=\color{eclipsePurple},
+    stringstyle=\color{eclipseBlue},
 }
 \newfontfamily\listingsfont[Scale=.5]{Monaco} 
 \newfontfamily\listingsfontinline[Scale=1.8]{Monaco} 
+\definecolor{eclipseBlue}{RGB}{42,0.0,255}
+\definecolor{eclipseGreen}{RGB}{63,127,95}
+\definecolor{eclipsePurple}{RGB}{127,0,85}
 
 \def\@vpt{12}
