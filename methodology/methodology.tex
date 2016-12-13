@@ -12,6 +12,7 @@
     \label{fig:methodologyoverview}
 \end{sidewaysfigure}
 
+% - - - - - - - - - - - - - - - - - - - -
 \subsection{การวิเคราะห์ข้อมูลเบื้องต้น}
 \label{subs:introsection}
 
@@ -22,7 +23,9 @@
 และ\FirstTimeDefine{\sourcecodeInstrumention}{\sourcecodeInstrumentionEN} 
 โดยมีแนวทางการดำเนินงานของแต่ละขั้นตอน ดังนี้
 
-\subsubsection{\FirstTimeDefine{\constantExtracting}{\constantExtractingEN}}
+% - - - - - - - - - - - - - - - - - - - -
+% - - - - - - - - - - - - - - - - - - - -
+\subsubsection{\constantExtracting}
 \label{sec:sub:sub:sourceCodeExtract}
 
 การทำเหมืองข้อมูลค่าคงที่นั้นเป็นกระบวนการเพื่อกำหนดแนวทางการในการสร้างข้อมูลทดสอบสำหรับ{\TestPath}ที่เลือก โดยมีแนวทางการจัดเก็บค่าคงที่ที่ประกาศไว้
@@ -48,7 +51,9 @@
 หลังจากรวบรวม{\bf ค่าคงที่}จาก{\sourcecode}ได้เรียบร้อยแล้ว จะนำ{\bf ข้อมูลพื้นฐาน} และ{\bf โครงสร้างข้อมูลจำกัดเขต} ที่รวบรวมได้
 จัดหมวดหมู่และบันทึกไว้ภายใน{\it ฐานข้อมูล}
 
-\subsubsection{\FirstTimeDefine{\graphCreation}{\graphCreationEN}}
+% - - - - - - - - - - - - - - - - - - - -
+% - - - - - - - - - - - - - - - - - - - -
+\subsubsection{\graphCreation}
 \label{sec:sub:sub:graphCreation}
 
 กระบวนการสร้างกราฟนั้นจะรับข้อมูล{\sourcecode}จาก{\Repository}เพื่อนำข้อมูลมาใช้สร้างกราฟ โดยแบ่งออกเป็น 2 กระบวนการย่อยด้วยกัน 
@@ -70,27 +75,29 @@
 เมื่อสิ้นสุดกระบวนการจะนำข้อมูล{\bf {\scg}} และ{\bf {\cfg}} ที่ได้จัดเก็บลง {\it ฐานข้อมูล} เพื่อจัดเตรียมไว้สำหรับ 
 {\bf ขั้นตอนการสร้างกรณีทดสอบ} และ{\bf เปรียบเทียบผลลัพธ์การดำเนินการ} ต่อไป
 
-\subsubsection{\FirstTimeDefine{\sourcecodeInstrumention}{\sourcecodeInstrumentionEN}}
+% - - - - - - - - - - - - - - - - - - - -
+% - - - - - - - - - - - - - - - - - - - -
+\subsubsection{\sourcecodeInstrumention}
 \label{sec:sub:sub:srcInstrument}
 
 เนื่องจากว่าการทดสอบนี้จำเป็นต้องครอบคลุม{\Path}ระหว่าง{\CUT} ดังนั้นจำเป็นจะต้องแทรกชุดคำสั่งใน{\sourcecode}ในแต่ละขั้นตอนการทำงาน 
 จากนั้นจึงนำ{\sourcecode}ที่ผ่านการแทรกชุดคำสั่งเรียบร้อยแล้วไปใช้ในกระบวนการทดสอบ 
 แล้วจึงจัดเก็บผลลัพธ์ที่ได้ระหว่างขั้นตอนการทดสอบ เพื่อนำมาเปรียบเทียบกับ{\TestPath}ที่เลือก
 
-\begin{figure}[hbt!]
-    \lstset{style=thesiscodestyle}
-    \lstinputlisting[language=java]{methodology/SimpleBonusScoreInstrumented.java}
-    \caption{{\class} \code{SimpleBonusScoreInstrumented}}
-    \label{fig:javaBonusScoreInstrumented}
-\end{figure}
-
-จากตัวอย่าง\figref{fig:javaBonusScoreInstrumented} เป็น{\sourcecode}ที่สืบเนื่องมาจาก\figref{fig:javaBonusScore}
-แต่ต่างกันโดยแทรกชุดคำสั่งเข้าไปภายใน{\sourcecode} ณ บรรทัดที่ \code{3, 6, 8, 11, 16, 19} และ \code{25} ซึ่งการแทรกชุดคำสั่งในกระบวนการนี้จะสนใจเพียงแค่{\CUT} เท่านั้น
+% \begin{figure}[ht!]
+%     \lstset{style=thesiscodestyle}
+%     \lstinputlisting[language=java]{methodology/SimpleBonusScoreInstrumented.java}
+%     \caption{{\class} \code{SimpleBonusScoreInstrumented}}
+%     \label{fig:javaBonusScoreInstrumented}
+% \end{figure}
+% 
+% จากตัวอย่าง\figref{fig:javaBonusScoreInstrumented} เป็น{\sourcecode}ที่สืบเนื่องมาจาก\figref{fig:javaBonusScore}
+% แต่ต่างกันโดยแทรกชุดคำสั่งเข้าไปภายใน{\sourcecode} ณ บรรทัดที่ \code{3, 6, 8, 11, 16, 19} และ \code{25} ซึ่งการแทรกชุดคำสั่งในกระบวนการนี้จะสนใจเพียงแค่{\CUT} เท่านั้น
 
 เมื่อเสร็จสิ้นกระบวนการแทรกชุดคำสั่ง จะนำ{\sourcecode}ที่ได้จัดเก็บไว้ใน {\it ฐานข้อมูล} เพื่อจัดเตรียมไว้สำหรับนำไปทดสอบอีกครั้ง
 
-\clearpage
-\subsection{\FirstTimeDefine{\testcaseGeneration}{\testcaseGenerationEN}}
+% - - - - - - - - - - - - - - - - - - - -
+\subsection{\testcaseGeneration}
 \label{sec:sub:tcg}
 
 การดำเนินงานวิจัยในครั้งนี้จะนำ {\bf ข้อมูลกราฟ} ซึ่งประกอบไปด้วย {\it {\scg}} ร่วมกับ{\it {\cfg}} ใช้เป็นข้อมูลเริ่มต้นเพื่อสร้าง{\TestPath}
@@ -104,7 +111,9 @@
     \label{fig:testcaseGenerationActivity}
 \end{figure}
 
-\subsubsection{\FirstTimeDefine{\testpathSelection}{\testpathSelectionEN}}
+% - - - - - - - - - - - - - - - - - - - -
+% - - - - - - - - - - - - - - - - - - - -
+\subsubsection{\testpathSelection}
 
 ในขั้นตอนนี้จะพิจารณาจากข้อมูล{\it \scg} ร่วมกับ {\it \cfg} เพื่อเลือก{\TestPath}ที่ครอบคลุมความสัมพันธ์ระหว่าง{\class}ที่ปรากฎบน{\scg} 
 เฉพาะระหว่าง{\CUT} ซึ่งจาก{\scg}ตัวอย่างใน\figref{fig:scggrading} จะได้{\TestPath} 2 {\Path} ด้วยกันคือ
@@ -145,7 +154,8 @@
 %     \code{P_2: \underbrace{17-18}_{G}-\overbrace{6-7-8-9-10-11}^{B}-\newline \underbrace{B}_{Q}-\overbrace{11-12-13-14-21-22-23-24}^{B}-\underbrace{18-19-20-25-26}_{G}}
 % \end{equation*}
 
-\clearpage
+% - - - - - - - - - - - - - - - - - - - -
+% - - - - - - - - - - - - - - - - - - - -
 \subsubsection{การวิเคราะห์พารามิเตอร์และการคืนค่าของ{\method}}
 
 แนวทางในขั้นตอนนี้จะนำ{\TestPath}ที่ได้คัดเลือกไว้ในขั้นตอนก่อนหน้านี้ (ซึ่งในที่นี้คือ \code{P_1} และ\code{P_2}) มาพิจารณาข้อมูลนำเข้า
@@ -164,7 +174,9 @@
 เพื่อสร้างกรณีทดสอบและข้อมูลทดสอบที่เข้าทดสอบ{\TestPath}ตามที่เลือกได้ โดยที่ข้อมูลที่สร้างขึ้นนั้นจะต้องทำให้เงื่อนไข 
 \code{G:19} เป็นจริง (\code{True}) และเงื่อนไข \code{S:8} เป็นเท็จ (\code{False})
 
-\subsubsection{\FirstTimeDefine{\randomTestData}{\randomTestDataEN}}
+% - - - - - - - - - - - - - - - - - - - -
+% - - - - - - - - - - - - - - - - - - - -
+\subsubsection{\randomTestData}
 \label{sec:sub:randomTestData}
 
 สำหรับแนวทางการดำเนินงานในขั้นตอนนี้จะรับเงื่อนไขการสร้าง{\testData}จากกระบวนการก่อนหน้าเพื่อนำมาสร้างข้อมูลทดสอบ 
@@ -191,21 +203,23 @@
     \end{tabular}
 \end{table}
 
-\subsubsection{\FirstTimeDefine{\testcaseGeneration}{\testcaseGenerationEN}}
+% - - - - - - - - - - - - - - - - - - - -
+% - - - - - - - - - - - - - - - - - - - -
+\subsubsection{\testcaseGeneration}
 \label{sec:sub:sub:tcGen}
 
 ในขั้นตอนนี้จะนำข้อมูลนำเข้าที่สร้างจากกระบวนการก่อนหน้ามาสร้างกรณีทดสอบสำหรับภาษาจาวา โดยใส่{\expectedOutput} (บรรทัดที่ 7) 
 จะเกิดจากการสุ่มโดยอิงตามประเภทข้อมูลที่{\method}นั้นคืนค่า ดังตัวอย่างของกรณีทดสอบภายใน {\it \testSuite} ดัง \figref{fig:junitGradingTest} ด้านล่าง
 
-\begin{figure}[hbt!]
+\begin{figure}[ht!]
     \lstset{basicstyle=\small,style=thesiscodestyle}
     \lstinputlisting[language=Java]{methodology/SimpleGradingTest.java}
     \caption{กรณีทดสอบที่สร้างขึ้นจากข้อมูลทดสอบ}
     \label{fig:junitGradingTest}
 \end{figure}
 
-\clearpage
-\subsection{\FirstTimeDefine{\expectedOutputAdjustment}{\expectedOutputAdjustmentEN}}
+% - - - - - - - - - - - - - - - - - - - -
+\subsection{\expectedOutputAdjustment}
 \label{sec:sub:expectedOutputAdj}
 
 ในขั้นตอนนี้\tester จะทำหน้าที่ปรับค่า\FirstTimeDefine{\expectedOutput}{\expectedOutputEN}
@@ -215,21 +229,21 @@
 ซึ่งในที่นี้นักทดสอบซอฟต์แวร์ได้ปรับค่าในบรรทัดที่ 5 โดยเปลี่ยนจาก \code{"IUUUSISS"} ให้เป็นค่า \code{"5873000021"} 
 และบรรทัดที่ 7 คือค่า \code{"lorem"} เป็นค่า \code{"U"} จะได้ตัวอย่างของ {\it กรณีทดสอบพร้อมใช้งาน} ดังนี้
 
-\begin{figure}[hbt!]
+\begin{figure}[ht!]
     \lstset{style=thesiscodestyle}
     \lstinputlisting{methodology/SimpleGradingTest-Refined.java}
     \caption{กรณีทดสอบที่สร้างขึ้นจากข้อมูลทดสอบที่ปรับค่าจากนักทดสอบซอฟต์แวร์แล้ว}
     \label{fig:junitGradingTestRefined}
 \end{figure}
 
-\subsection{\FirstTimeDefine{\executeSoftwareTesting}{\executeSoftwareTestingEN}}
+\subsection{\executeSoftwareTesting}
 \label{sec:sub:executeSoftwareTesting}
 
 แนวทางการดำเนินงานในขั้นตอนนี้จะรับ {\it ชุดกรณีทดสอบ} เข้าทดสอบร่วมกับ{\sourcecode}ที่ผ่าน{\it \sourcecodeInstrumention} จาก{\it ฐานข้อมูล} 
 และรวบรวมข้อมูลที่เกิดจากชุดคำสั่งที่แทรกไว้ ซึ่งปรากฎขึ้นระหว่างการทดสอบเข้าไว้ด้วยกันเป็น {\it ผลลัพธ์การทดสอบซอฟต์แวร์} 
 เพื่อใช้ตรวจสอบให้แน่ใจว่ากรณีทดสอบนั้นสามารถทดสอบ{\TestPath}ที่เลือกได้ 
 
-\subsection{\FirstTimeDefine{\testResultCompare}{\testResultCompareEN}}
+\subsection{\testResultCompare}
 
 ในขั้นตอนนี้จะรับ {\it ผลลัพธ์การทดสอบซอฟต์แวร์} มาสร้างเส้นทางการทดสอบเทียบกับ{\TestPath}ที่ได้เลือกไว้ก่อนหน้านี้ 
 เพื่อให้แน่ใจได้ว่าชุดทดสอบที่สร้างขึ้นนั้นครอบคลุม{\scg}ตาม{\TestPath}ที่กำหนดไว้
