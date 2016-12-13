@@ -116,7 +116,7 @@
 ในลักษณะของ\FirstTimeDefine{\class}{\classEN} \FirstTimeDefine{\method}{\methodEN} และ \FirstTimeDefine{\attribute}{\attributeEN} 
 ดังนั้นหากต้องทำเข้าใจถึงการมีปฏิสัมพันธ์ระหว่าง{\class}ภายในซอฟต์แวร์ภายใต้การทดสอบ (Software under test: SUT) จาก{\sourcecode} 
 ที่ได้รับมานั้น{\scg}จึงเข้าช่วยแสดงความสัมพันธ์ในรูปแบบของ\FirstTimeDefine{\DirectedMultiGraph}{\DirectedMultiGraphEN}\ หากให้แทน{\software} \code{P} 
-แทนด้วยกราฟ \code{G} จึงสามารถเขียนความสัมพันธ์ในรูปของทูเปิ้ล 6 รายการ \code{G = (V, E, tail, head, \ell_V, \ell_E, \sigma, \delta)}
+แทนด้วยกราฟ \code{G} จึงสามารถเขียนความสัมพันธ์ในรูปของทูเปิ้ล 8 รายการ \code{G = (V, E, tail, head, \ell_V, \ell_E, \sigma, \delta)}
 
 \begin{table}[ht!]
     \begin{tabular}{ll}
@@ -124,8 +124,10 @@
             & \code{E} คือ เซตซึ่งมีสมาชิกจำกัดของ{\Edge} \\
             & \code{tail:E \rightarrow V} คือ ฟังก์ชันซึ่งกำหนด{\Edge}ให้กับ{\Node}หาง (tail) \\
             & \code{head:E \rightarrow V} คือ ฟังก์ชันซึ่งกำหนด{\Edge}ให้กับ{\Node}หัว (head) \\
-            & \code{\ell_V:V \rightarrow tail} คือ ฟังก์ชันที่กำหนดแผ่นป้ายให้กับ{\Node} \\
-            & \code{\ell_E:E \rightarrow head} คือ ฟังก์ชันที่กำหนดแผ่นป้ายให้กับ{\Edge} \\
+            & \code{\ell_V} คือ เซตของแผ่นป้ายกำกับที่แต่ละ{\Node} \\
+            & \code{\ell_E} คือ เซตของแผ่นป้ายกำกับที่แต่ละ{\Edge} \\
+            & \code{\sigma:V \rightarrow tail} คือ ฟังก์ชันที่กำหนดแผ่นป้ายให้กับ{\Node} \\
+            & \code{\delta:E \rightarrow head} คือ ฟังก์ชันที่กำหนดแผ่นป้ายให้กับ{\Edge} \\
     \end{tabular}
 \end{table}
 
