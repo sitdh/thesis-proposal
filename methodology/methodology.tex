@@ -125,21 +125,33 @@
 ในขั้นตอนนี้จะพิจารณาจากข้อมูล{\it \scg} ร่วมกับ {\it \cfg} เพื่อเลือก{\TestPath}ที่ครอบคลุมความสัมพันธ์ระหว่าง{\class}ที่ปรากฎบน{\scg} 
 เฉพาะระหว่าง{\CUT} ซึ่งจาก{\scg}ตัวอย่างใน\figref{fig:scggrading} จะได้{\TestPath} 2 {\Path} ด้วยกันคือ
 
-\begin{enumerate}
-    \item[\code{P_1:}] \code{G - [grading:score] - B - [score:getQuizScore] - Q}
-    \item[\code{P_2:}] \code{G - [grading:score] - B - [score:getQuizSum] - Q}
-\end{enumerate}
+\begin{figure}[ht!]
+    \centering
+    \begin{tikzpicture}[shorten >=1pt, node distance=5cm, auto,]
+        \node(p1){\code{P_1:}};
+        \node[right of=p1, xshift=-4.4cm](g1){\code{G}};
+        \node[right of=g1](s1){\code{S}};
+        \node[right of=s1](q1){\code{Q}};
+        %
+        \node[below of=p1,yshift=4cm](p2){\code{P_2:}};
+        \node[right of=p2, xshift=-4.4cm](g2){\code{G}};
+        \node[right of=g2](s2){\code{S}};
+        \node[right of=s2](q2){\code{Q}};
+        %
+        % Path
+        \path(g1) edge [] node {\code{grading:score}} (s1);
+        \path(s1) edge [] node {\code{score:getQuizScore}} (q1);
+        %
+        \path(g2) edge [] node {\code{grading:score}} (s2);
+        \path(s2) edge [] node {\code{score:getQuizSum}} (q2);
+    \end{tikzpicture}
+    \caption{{\TestPath}จาก{\scg}}
+    \label{fig:testPathFromSCG}
+\end{figure}
 
 เพื่อให้ทราบถึงเงื่อนไขที่ทำให้กรณีทดสอบที่สร้างขึ้นสามารถทดสอบ{\TestPath}ข้างต้นได้ จึงใช้{\cfg}ของ{\method} \code{grading} จาก{\class} \code{SimpleGrading}, 
 {\method} \code{score} จาก{\class} \code{SimpleBonusScore} รวมทั้ง{\method} \code{getQuizeScore} และ \code{getQuizSum} จาก{\class} \code{SimpleQuiz}
 รวมพิจารณา ดัง\figref{fig:callreferences}
-
-% \begin{sidewaysfigure}[hp!]
-%     \centering
-%     \includegraphics[width=0.9\textwidth]{test-path-selection-call-reference}
-%     \caption{โครงสร้างความสัมพันธ์ของ\class \code{SimpleGrading}, \code{SimpleBonusScore} และ\code{SimpleQuiz}}
-%     \label{fig:callreferences}
-% \end{sidewaysfigure}
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]{test-path-selection-call-reference}
@@ -162,10 +174,6 @@
     \code{P_1: \underbrace{17-18}_{G}-\overbrace{6-7}^{B}-\underbrace{A}_{Q}-\overbrace{7-\overline{8}-22-24}^{B}-\underbrace{18-19-20-25-26}_{G}} 
     \label{eq:exampleTestPathP1}
 \end{equation*}
-% \begin{equation*}
-%     \centering
-%     \code{P_2: \underbrace{17-18}_{G}-\overbrace{6-7-8-9-10-11}^{B}-\newline \underbrace{B}_{Q}-\overbrace{11-12-13-14-21-22-23-24}^{B}-\underbrace{18-19-20-25-26}_{G}}
-% \end{equation*}
 
 % - - - - - - - - - - - - - - - - - - - -
 % - - - - - - - - - - - - - - - - - - - -
