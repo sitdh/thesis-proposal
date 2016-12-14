@@ -130,12 +130,12 @@
     \begin{tikzpicture}[shorten >=1pt, node distance=5cm, auto,]
         \node(p1){\code{P_1:}};
         \node[right of=p1, xshift=-4.4cm](g1){\code{G}};
-        \node[right of=g1](s1){\code{S}};
+        \node[right of=g1](s1){\code{B}};
         \node[right of=s1](q1){\code{Q}};
         %
         \node[below of=p1,yshift=4cm](p2){\code{P_2:}};
         \node[right of=p2, xshift=-4.4cm](g2){\code{G}};
-        \node[right of=g2](s2){\code{S}};
+        \node[right of=g2](s2){\code{B}};
         \node[right of=s2](q2){\code{Q}};
         %
         % Path
@@ -159,21 +159,21 @@
     \label{fig:callreferences}
 \end{figure}
 
+\newpage
 ซึ่งมีแนวทางการเลือก{\TestPath} ดังนี้
-
 \begin{enumerate}
-    \item ให้น้ำหนักในทิศทางที่มุ่งไปยัง{\Node} ซึ่งพบการเรียกใช้งานระหว่าง{\class}ตามที่กำหนดไว้จาก{\scg}มากที่สุดเสมอ
     \item เลือก{\TestPath}ที่สั้นที่สุด (Shortest path) ก่อนเสมอ
     \item เลือก{\TestPath}ที่พบ{\PredicateNode}น้อยที่สุดก่อนเสมอ
     \item เลือก{\TestPath}ไปยังทิศที่ทำให้{\PredicateNode}มีค่าความจริงเป็นจริงก่อนเสมอ
 \end{enumerate}
 
-เมื่อพิจารณาข้อมูลกราฟดัง \figref{fig:callreferences} จะได้{\TestPath} \code{P_1} ดังนี้
-\begin{equation*}
+เมื่อพิจารณาข้อมูลกราฟดัง \figref{fig:callreferences} จะได้{\TestPath} \code{P_1} ดัง\figref{fig:exampleTestPathP1}
+\begin{figure}
     \centering
     \code{P_1: \underbrace{17-18}_{G}-\overbrace{6-7}^{B}-\underbrace{A}_{Q}-\overbrace{7-\overline{8}-22-24}^{B}-\underbrace{18-19-20-25-26}_{G}} 
-    \label{eq:exampleTestPathP1}
-\end{equation*}
+    \caption{รายการของ{\Node}ที่ต้องพิจารณาของ{\TestPath} \code{P_1}}
+    \label{fig:exampleTestPathP1}
+\end{figure}
 
 % - - - - - - - - - - - - - - - - - - - -
 % - - - - - - - - - - - - - - - - - - - -
