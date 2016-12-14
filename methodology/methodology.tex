@@ -5,13 +5,6 @@
 ซึ่งได้จากการวิเคราะห์{\StaticInformation}ของ{\sourcecode}ภาษาจาวา แล้วจึงนำมาสร้างกรณีทดสอบตลอดจนข้อมูลทดสอบซึ่งสอดคล้องกับเงื่อนไขที่พบ
 ดัง\figref{fig:methodologyoverview} ซึ่งมีแนวทางการดำเนินงานดังนี้
 
-% \begin{sidewaysfigure}
-%     \centering
-%     \includegraphics[width=0.9\textwidth]{methodology-overview}
-%     \caption{ภาพรวมการดำเนินงานวิจัย}
-%     \label{fig:methodologyoverview}
-% \end{sidewaysfigure}
-
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=\textwidth]{methodology-overview}
@@ -213,8 +206,9 @@
     \centering
     \caption{ตัวอย่าง{\randomTestData}ที่ได้}
     \label{tab:GRTRandom}
-    \begin{tabularx}{\textwidth}{|@{}l| *2{>{\centering\arraybackslash}X|}@{}}
+    \begin{tabularx}{\textwidth}{|*3{>{\centering\arraybackslash}X|}@{}}
         \hline
+        \rowcolor{LightGray}
         ตัวแปร                    & ประเภทข้อมูล   & ค่าที่สุ่มได้          \\ \hline
         \code{student\_score}    & {\it int}    & {\bf 75}         \\ \hline
         \code{bonus\_score}      & {\it int}    & {\bf 0}         \\ \hline
