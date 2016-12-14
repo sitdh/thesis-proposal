@@ -5,12 +5,19 @@
 ซึ่งได้จากการวิเคราะห์{\StaticInformation}ของ{\sourcecode}ภาษาจาวา แล้วจึงนำมาสร้างกรณีทดสอบตลอดจนข้อมูลทดสอบซึ่งสอดคล้องกับเงื่อนไขที่พบ
 ดัง\figref{fig:methodologyoverview} ซึ่งมีแนวทางการดำเนินงานดังนี้
 
-\begin{sidewaysfigure}
+% \begin{sidewaysfigure}
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{methodology-overview}
+%     \caption{ภาพรวมการดำเนินงานวิจัย}
+%     \label{fig:methodologyoverview}
+% \end{sidewaysfigure}
+
+\begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.9\textwidth]{methodology-overview}
+    \includegraphics[width=\textwidth]{methodology-overview}
     \caption{ภาพรวมการดำเนินงานวิจัย}
     \label{fig:methodologyoverview}
-\end{sidewaysfigure}
+\end{figure}
 
 % - - - - - - - - - - - - - - - - - - - -
 \subsection{การวิเคราะห์ข้อมูลเบื้องต้น}
@@ -106,7 +113,7 @@
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.5\textwidth]{methodology-activities-test-case-gen}
+    \includegraphics[width=0.45\textwidth]{methodology-activities-test-case-gen}
     \caption{ขั้นตอนการสร้างกรณีทดสอบ}
     \label{fig:testcaseGenerationActivity}
 \end{figure}
@@ -127,12 +134,18 @@
 {\method} \code{score} จาก{\class} \code{SimpleBonusScore} รวมทั้ง{\method} \code{getQuizeScore} และ \code{getQuizSum} จาก{\class} \code{SimpleQuiz}
 รวมพิจารณา ดัง\figref{fig:callreferences}
 
-\begin{sidewaysfigure}[hbt!]
-    \centering
-    \includegraphics[width=0.9\textwidth]{test-path-selection-call-reference}
+% \begin{sidewaysfigure}[hp!]
+%     \centering
+%     \includegraphics[width=0.9\textwidth]{test-path-selection-call-reference}
+%     \caption{โครงสร้างความสัมพันธ์ของ\class \code{SimpleGrading}, \code{SimpleBonusScore} และ\code{SimpleQuiz}}
+%     \label{fig:callreferences}
+% \end{sidewaysfigure}
+
+\begin{figure}[h!]
+    \includegraphics[width=\textwidth]{test-path-selection-call-reference}
     \caption{โครงสร้างความสัมพันธ์ของ\class \code{SimpleGrading}, \code{SimpleBonusScore} และ\code{SimpleQuiz}}
     \label{fig:callreferences}
-\end{sidewaysfigure}
+\end{figure}
 
 ซึ่งมีแนวทางการเลือก{\TestPath} ดังนี้
 
