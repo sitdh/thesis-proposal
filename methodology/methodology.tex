@@ -204,16 +204,10 @@
 เพื่อให้กรณีทดสอบสามารถทดสอบ{\TestPath}ตามที่เลือกได้ ตามวิธีการที่กำหนด \cite{XING201491, Ma2016, Heaton2000} 
 หากมีพารามิเตอร์ที่ไม่ปรากฎใน{\TestPath}เป็นข้อมูลนำเข้า จะใช้วิธีการสุ่ม{\testData}โดยอาศัยข้อค่าคงที่ประกอบการพิจารณา
 
-% ให้คำนวณหาค่าความน่าจะเป็นที่จะนำค่าคงที่มาใช้ TF-IDF 
-% (Term Frequency-Inverse Document Frequency: TF-IDF) \cite{Ma2016} 
-
 เมื่อพิจารณาข้อมูล\FirstTimeDefine{\MethodSignature}{\MethodSignatureEN} ของ{\method} \code{score} ของ{\class} \code{SimpleGrading} 
 พบว่า{\method}นี้ต้องการพารามิเตอร์ทั้งหมด 3 ค่า ด้วยกัน คือ \code{student\_id:String}, \code{student\_score:int} และ\code{bonus\_score:int} 
 แต่จากตัวแปรที่พบใน{\PredicateNode}นั้นจะมีเพียง \code{student\_score} และ\code{bonus\_score} 
 คงเหลือตัวแปร \code{student\_id} 
-
-% ที่จะใช้การคำนวณความคล้ายด้วยวิธี TF-IDF \cite{Ma2016}
-% กำหนดให้ค่าที่สุ่ม{\it \randomTestData } ได้ออกมาเป็นดัง \tabpageref{tab:GRTRandom}
 
 \begin{table}[ht!]
     \centering
