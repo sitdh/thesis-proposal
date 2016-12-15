@@ -5,18 +5,21 @@
 ซึ่งได้จากการวิเคราะห์{\StaticInformation}ของ{\sourcecode}ภาษาจาวา แล้วจึงนำมาสร้างกรณีทดสอบตลอดจนข้อมูลทดสอบซึ่งสอดคล้องกับเงื่อนไขที่พบ
 ดัง\figref{fig:methodologyoverview} ซึ่งมีแนวทางการดำเนินงานดังนี้
 
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=\textwidth]{methodology-overview}
-    \caption{ภาพรวมการดำเนินงานวิจัย}
-    \label{fig:methodologyoverview}
-\end{figure}
+\begin{centering}
+    \begin{figure}[ht!]
+        \centering
+        \includegraphics[width=1.2\textwidth]{methodology-overview}
+        \caption{ภาพรวมการดำเนินงานวิจัย}
+        \label{fig:methodologyoverview}
+    \end{figure}
+\end{centering}
 
 % - - - - - - - - - - - - - - - - - - - -
 \subsection{การวิเคราะห์ข้อมูลเบื้องต้น}
 \label{subs:introsection}
 
-ในขั้นตอนนี้เริ่มต้นด้วยการนำเข้าข้อมูล{\sourcecode}จาก{\Repository} เพื่อนำมารวบรวม{\StaticInformation} 
+ในขั้นตอนนี้เริ่มต้นด้วยการนำเข้าข้อมูลแพคเกจและแหล่งข้อมูล{\sourcecode}ซึ่ง{\tester} เพื่อใช้เป็นข้อมูลในการวิเคราะห์ข้อมูล{\sourcecode}ต่อไป
+จากนั้นจึงทำสำเนา{\sourcecode}จาก{\Repository} ตามที่ผู้ใช้งานระบุเข้ามาเก็บไว้ภายในฐานข้อมูล  เพื่อใช้มารวบรวม{\StaticInformation} 
 โดยสนใจเพียงเฉพาะ{\class}ซึ่งบรรจุอยู่ภายใน\FirstTimeDefine{\Package}{\PackageEN} ตามที่ผู้ใช้งานระบุ 
 โดยกำหนดให้เป็น "\FirstTimeDefine{\CUT}{\CUTEN}" ทั้งนี้กระบวนการจะประกอบไปด้วย 3 ขั้นตอนด้วยกัน นั่นคือ
 \FirstTimeDefine{\constantExtracting}, \FirstTimeDefine{\graphCreation}{\graphCreationEN} 
@@ -56,7 +59,8 @@
 \subsubsection{\graphCreation}
 \label{sec:sub:sub:graphCreation}
 
-กระบวนการสร้างกราฟนั้นจะรับข้อมูล{\sourcecode}จาก{\Repository}เพื่อนำข้อมูลมาใช้สร้างกราฟ โดยแบ่งออกเป็น 2 กระบวนการย่อยด้วยกัน 
+กระบวนการสร้างกราฟนั้นจะรับข้อมูล{\sourcecode}จาก{\Repository}ร่วมกับข้อมูลแพคเกจที่{\tester}สนใจมาประกอบกัน 
+เพื่อใช้สร้างกราฟ โดยแบ่งออกเป็น 2 กระบวนการย่อยด้วยกัน 
 นั้นคือ การสร้าง{\scg} และการสร้าง{\cfg} ดังนี้
 
 \begin{enumerate}
@@ -67,7 +71,8 @@
             \item การเรียกใช้งานระหว่าง{\CUT}และชุดคำสั่งภายนอก (\code{3^{rd}} party library) \label{ord:scg3rd} 
         \end{enumerate}
         ซึ่งในแนวทางการดำเนินงานนี้จะสนใจเฉพาะ{\scg}ของ{\CUT}เท่านั้น ดังนั้นในขั้นตอนนี้ไม่สนใจกราฟที่เกิดจากการเรียกใช้ในข้อ 1.2
-        และ 1.3 ตลอดจนกราฟที่เกิดจากการสร้างวัตถุใหม่ เพื่อให้ได้{\scg}เฉพาะ{\CUT} ดังเช่น{\scg}โปรแกรมคํานวณเกรดนิสิต ใน\figref{fig:scggrading}
+        และ 1.3 ตลอดจนกราฟที่เกิดจากการสร้างวัตถุใหม่ เพื่อให้ได้{\scg}เฉพาะ{\CUT} ดังเช่น{\scg}โปรแกรมคํานวณเกรดนิสิต 
+        ใน\figref{fig:scggrading}
 
     \item {\bf สร้าง{\cfg}} โดยจะอ่านข้อมูลของ{\CUT}นำมาสร้าง{\cfg}และจัดเก็บข้อมูลไว้ภายในฐานข้อมูล
 \end{enumerate}
@@ -257,6 +262,5 @@
 เพื่อใช้ตรวจสอบให้แน่ใจว่ากรณีทดสอบนั้นสามารถทดสอบ{\TestPath}ที่เลือกได้ 
 
 \subsection{\testResultCompare}
-
 ในขั้นตอนนี้จะรับ {\it ผลลัพธ์การทดสอบซอฟต์แวร์} มาสร้างเส้นทางการทดสอบเทียบกับ{\TestPath}ที่ได้เลือกไว้ก่อนหน้านี้ 
-เพื่อให้แน่ใจได้ว่าชุดทดสอบที่สร้างขึ้นนั้นครอบคลุม{\scg}ตาม{\TestPath}ที่กำหนดไว้
+เพื่อให้แน่ใจได้ว่าชุดทดสอบที่สร้างขึ้นนั้นครอบคลุม{\scg}ตาม{\TestPath}ที่กำหนดไว้ และแสดงผลลัพธ์กลับให้{\tester}ทราบ
