@@ -1,7 +1,8 @@
 \section{แนวคิดและวิธีการดำเนินงาน}
 \label{sec:methodology}
 
-งานวิจัยนี้นำเสนอวิธีการสร้างกรณีทดสอบและข้อมูลทดสอบสำหรับ{\TestPath}ที่ครอบคลุมความสัมพันธ์ระหว่าง{\softwareComponent}ในรูปขอบ{\scg} 
+งานวิจัยนี้นำเสนอวิธีการสร้างกรณีทดสอบและข้อมูลทดสอบซึ่งสอดคล้องกับ{\TestPath}ที่เลือก 
+และครอบคลุมความสัมพันธ์ระหว่างองค์ประกอบของ{\software}ในรูปขอบ{\scg} 
 ซึ่งได้จากการวิเคราะห์{\StaticInformation}ของ{\sourcecode}ภาษาจาวา แล้วจึงนำมาสร้างกรณีทดสอบตลอดจนข้อมูลทดสอบซึ่งสอดคล้องกับเงื่อนไขที่พบ
 ดัง\figref{fig:methodologyoverview} ซึ่งมีแนวทางการดำเนินงานดังนี้
 
@@ -22,8 +23,8 @@
 จากนั้นจึงทำสำเนา{\sourcecode}จาก{\Repository} ตามที่ผู้ใช้งานระบุเข้ามาเก็บไว้ภายในฐานข้อมูล  เพื่อใช้มารวบรวม{\StaticInformation} 
 โดยสนใจเพียงเฉพาะ{\class}ซึ่งบรรจุอยู่ภายใน\FirstTimeDefine{\Package}{\PackageEN} ตามที่ผู้ใช้งานระบุ 
 โดยกำหนดให้เป็น "\FirstTimeDefine{\CUT}{\CUTEN}" ทั้งนี้กระบวนการจะประกอบไปด้วย 3 ขั้นตอนด้วยกัน นั่นคือ
-\FirstTimeDefine{\constantExtracting}, \FirstTimeDefine{\graphCreation}{\graphCreationEN} 
-และ\FirstTimeDefine{\sourcecodeInstrumention}{\sourcecodeInstrumentionEN} 
+{\constantExtracting}, {\graphCreation} 
+และ{\sourcecodeInstrumention} 
 โดยมีแนวทางการดำเนินงานของแต่ละขั้นตอน ดังนี้
 
 % - - - - - - - - - - - - - - - - - - - -
@@ -40,7 +41,7 @@
             \item {\bf ตัวอักษร} ซึ่งมีประเภทข้อมูลเป็น \code{String} ในภาษาจาวา
             \item {\bf ตัวเลข} ซึ่งมีประเภทข้อมูล ได้แก่ \code{byte, short, int, long, float} และ\code{double} ในภาษาจาวา
         \end{enumerate}
-    \item {\it โครงสร้างข้อมูลจำกัดเขต (Enumeration)} ซึ่งมีประเภทข้อมูลเป็น \code{enum} ในภาษาจาวา
+    \item {\it {\enum} (Enumeration)} ซึ่งมีประเภทข้อมูลเป็น \code{enum} ในภาษาจาวา
 \end{enumerate}
 
 ทั้งนี้จะไม่สนใจข้อมูลเชิงตรรกะ (มีชนิดข้อมูลเป็น \code{bool} ในภาษาจาวา) เนื่องมาจากว่าตัวเลือกที่เป็นไปได้จำกัดอยู่แล้ว 
@@ -51,7 +52,7 @@
 ตลอดจนค่าคงที่ซึ่งอยู่ในบรรทัดที่ \code{4, 5, 6, 8, 9} และ \code{10} ของ{\class} \code{SimpleGrading} 
 แล้วจึงนำมาจัดเก็บไว้ภายในฐานข้อมูลโดยแยกตาม{\class}ที่พบค่าคงที่เหล่านั้น เพื่อใช้ในขั้นตอน {\bf \testcaseGeneration} ต่อไป
 
-หลังจากรวบรวม{\bf ค่าคงที่}จาก{\sourcecode}ได้เรียบร้อยแล้ว จะนำ{\bf ข้อมูลพื้นฐาน} และ{\bf โครงสร้างข้อมูลจำกัดเขต} ที่รวบรวมได้
+หลังจากรวบรวม{\bf ค่าคงที่}จาก{\sourcecode}ได้เรียบร้อยแล้ว จะนำ{\bf ข้อมูลพื้นฐาน} และ{\bf {\enum}} ที่รวบรวมได้
 จัดหมวดหมู่และบันทึกไว้ภายใน{\it ฐานข้อมูล}
 
 % - - - - - - - - - - - - - - - - - - - -
@@ -87,17 +88,7 @@
 
 เนื่องจากว่าการทดสอบนี้จำเป็นต้องครอบคลุม{\Path}ระหว่าง{\CUT} ดังนั้นจำเป็นจะต้องแทรกชุดคำสั่งใน{\sourcecode}ในแต่ละขั้นตอนการทำงาน 
 จากนั้นจึงนำ{\sourcecode}ที่ผ่านการแทรกชุดคำสั่งเรียบร้อยแล้วไปใช้ในกระบวนการทดสอบ 
-แล้วจึงจัดเก็บผลลัพธ์ที่ได้ระหว่างขั้นตอนการทดสอบ เพื่อนำมาเปรียบเทียบกับ{\TestPath}ที่เลือก
-
-% \begin{figure}[ht!]
-%     \lstset{style=thesiscodestyle}
-%     \lstinputlisting[language=java]{methodology/SimpleBonusScoreInstrumented.java}
-%     \caption{{\class} \code{SimpleBonusScoreInstrumented}}
-%     \label{fig:javaBonusScoreInstrumented}
-% \end{figure}
-% 
-% จากตัวอย่าง\figref{fig:javaBonusScoreInstrumented} เป็น{\sourcecode}ที่สืบเนื่องมาจาก\figref{fig:javaBonusScore}
-% แต่ต่างกันโดยแทรกชุดคำสั่งเข้าไปภายใน{\sourcecode} ณ บรรทัดที่ \code{3, 6, 8, 11, 16, 19} และ \code{25} ซึ่งการแทรกชุดคำสั่งในกระบวนการนี้จะสนใจเพียงแค่{\CUT} เท่านั้น
+แล้วจึงจัดเก็บผลลัพธ์ที่ได้ระหว่างขั้นตอนการทดสอบ แล้วจึงนำมาเปรียบเทียบกับ{\TestPath}ที่เลือกเพื่อหาความครอบคลุมของ{\scg}ถัดไป
 
 เมื่อเสร็จสิ้นกระบวนการแทรกชุดคำสั่ง จะนำ{\sourcecode}ที่ได้จัดเก็บไว้ใน {\it ฐานข้อมูล} เพื่อจัดเตรียมไว้สำหรับนำไปทดสอบอีกครั้ง
 
@@ -106,8 +97,9 @@
 \label{sec:sub:tcg}
 
 การดำเนินงานวิจัยในครั้งนี้จะนำ {\bf ข้อมูลกราฟ} ซึ่งประกอบไปด้วย {\it {\scg}} ร่วมกับ{\it {\cfg}} ใช้เป็นข้อมูลเริ่มต้นเพื่อสร้าง{\TestPath}
-ระหว่าง{\CUT} ให้ครอบคลุมความสัมพันธ์ระหว่าง{\class} ดังที่ปรากฎใน{\scg} โดยจะสร้างกรณีทดสอบโดยพิจารณาจาก{\PredicateNode}ที่ปรากฎบน{\TestPath}ที่เลือก 
-สุดท้ายจึงนำข้อมูลทั้งหมดที่ได้สร้างเป็นชุดกรณีทดสอบ โดยมีภาพรวมการดำเนินงานดัง \figref{fig:testcaseGenerationActivity}
+ระหว่าง{\CUT} ให้ครอบคลุมความสัมพันธ์ระหว่าง{\class} ดังที่ปรากฎใน{\scg} 
+สร้างกรณีทดสอบซึ่งพิจารณาจาก{\PredicateNode}ที่ปรากฎบน{\TestPath}ที่เลือก แล้วจึงนำข้อมูลทั้งหมดที่ได้สร้างเป็นชุดกรณีทดสอบ 
+โดยมีภาพรวมการดำเนินงานดัง \figref{fig:testcaseGenerationActivity}
 
 \begin{figure}[ht!]
     \centering
@@ -147,7 +139,7 @@
     \label{fig:testPathFromSCG}
 \end{figure}
 
-เพื่อให้ทราบถึงเงื่อนไขที่ทำให้กรณีทดสอบที่สร้างขึ้นสามารถทดสอบ{\TestPath}ข้างต้นได้ จึงใช้{\cfg}ของ{\method} \code{grading} จาก{\class} \code{SimpleGrading}, 
+เพื่อให้ทราบถึง{\pathConditions}บน{\TestPath} จึงใช้{\cfg}ของ{\method} \code{grading} จาก{\class} \code{SimpleGrading}, 
 {\method} \code{score} จาก{\class} \code{SimpleBonusScore} รวมทั้ง{\method} \code{getQuizeScore} และ \code{getQuizSum} จาก{\class} \code{SimpleQuiz}
 รวมพิจารณา ดัง\figref{fig:callreferences}
 
@@ -160,7 +152,7 @@
 \newpage
 ซึ่งมีแนวทางการเลือก{\TestPath} ดังนี้
 \begin{enumerate}
-    \item เลือก{\TestPath}ที่สั้นที่สุด (Shortest path) ก่อนเสมอ
+    \item เลือก{\TestPath}ที่สั้นที่สุดก่อนเสมอ
     \item เลือก{\TestPath}ที่พบ{\PredicateNode}น้อยที่สุดก่อนเสมอ
     \item เลือก{\TestPath}ไปยังทิศที่ทำให้{\PredicateNode}มีค่าความจริงเป็นจริงก่อนเสมอ
 \end{enumerate}
@@ -205,7 +197,8 @@
 เมื่อพิจารณาข้อมูล\FirstTimeDefine{\MethodSignature}{\MethodSignatureEN} ของ{\method} \code{score} ของ{\class} \code{SimpleGrading} 
 พบว่า{\method}นี้ต้องการพารามิเตอร์ทั้งหมด 3 ค่า ด้วยกัน คือ \code{student\_id:String}, \code{student\_score:int} และ\code{bonus\_score:int} 
 แต่จากตัวแปรที่พบใน{\PredicateNode}นั้นจะมีเพียง \code{student\_score} และ\code{bonus\_score} 
-คงเหลือตัวแปร \code{student\_id} 
+จึงใช้เงื่อนไขที่พบนั้นเป็นแนวทางการสร้าง{\testData}{\TestPath} คงเหลือตัวแปร \code{student\_id} จึงใช้การสุ่มข้อมูลเพื่อสร้าง{\testData}
+โดยพิจารณาจากค่าคงที่ที่มีประเภทข้อมูลแบบเดียวกัน ซึ่งจัดเก็บ{\sourcecode}จากกระบวนการก่อนหน้า
 
 \begin{table}[ht!]
     \centering
@@ -241,8 +234,8 @@
 \label{sec:sub:expectedOutputAdj}
 
 ในขั้นตอนนี้\tester จะทำหน้าที่ปรับค่า\FirstTimeDefine{\expectedOutput}{\expectedOutputEN}
-แนวทางการดำเนินงานในขั้นตอนนี้จะเป็นการปรับค่าข้อมูลที่อยู่ภายในกรณีทดสอบที่ได้รับโดยนักทดสอบซอฟต์แวร์ เพื่อให้กรณีทดสอบนั้นสอดคล้องกับการทำงานที่ควรจะเป็นของโปรแกรม
-มากที่สุด เนื่องจากการวิจัยครั้งนี้ยังไม่รองรับการวิเคราะห์ค่าผลลัพธ์ที่ได้จากการดำเนินงานของ{\method} ยกตัวอย่างเช่นกรณีทดสอบที่ได้จากขั้นตอนที่ 5.4 
+แนวทางการดำเนินงานในขั้นตอนนี้จะเป็นการปรับค่าข้อมูลที่อยู่ภายในกรณีทดสอบที่ได้รับโดยนักทดสอบซอฟต์แวร์ 
+เพื่อให้กรณีทดสอบนั้นสอดคล้องกับการทำงานที่ควรจะเป็นของโปรแกรมมากที่สุด ยกตัวอย่างเช่นกรณีทดสอบที่ได้จากขั้นตอนที่ 5.4 
 ดัง \figref{fig:junitGradingTest} เมื่อได้ปรับการปรับค่าความคาดหวังจากนักทดสอบซอฟต์แวร์แล้วจะได้เป็นดัง{\figref{fig:junitGradingTestRefined}
 ซึ่งในที่นี้นักทดสอบซอฟต์แวร์ได้ปรับค่าในบรรทัดที่ 5 โดยเปลี่ยนจาก \code{"IUUUSISS"} ให้เป็นค่า \code{"5873000021"} 
 และบรรทัดที่ 7 คือค่า \code{"lorem"} เป็นค่า \code{"U"} จะได้ตัวอย่างของ {\it กรณีทดสอบพร้อมใช้งาน} ดังนี้
