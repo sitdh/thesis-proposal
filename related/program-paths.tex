@@ -19,9 +19,9 @@
 หาก \code{v_i, v_j \in V} ซึ่ง \code{V} มีโหนดซึ่งไม่มีดีกรีเข้า \code{(d^+(v_i) = 0)} เป็นโหนดเริ่มต้น (Source node) 
 และโหนดซึ่งไม่มีดีกรีออก \code{(d^-(v_j) = 0)} เป็นโหนดปลาย (Sink node) 
 กล่าวได้ว่า{\cfg}นั้นถือว่าเป็นกราฟอวัฏจักรระบุทิศทาง (Directed acyclic graph: DAG) \cite{Bang-Jensen2009}\ 
-ซึ่งรูปแบบความสำพันธ์ของ{\cfg}นั้น McCabe \cite{Watson1996} 
+ซึ่งรูปแบบความสัมพันธ์ของ{\cfg}นั้น McCabe \cite{Watson1996} 
 ได้เสนอรูปแบบโครงสร้างการทำงานขั้นพื้นฐานของการโปรแกรม (The primitive operations of structured programming) 
-\figref{fig:graphtype}
+ดัง\figref{fig:graphtype}
 
 \begin{figure}[ht!]
     \centering
@@ -75,18 +75,20 @@
     \label{fig:programGraph}
 \end{figure}
 
-จาก{\figref{fig:programGraph}} เป็นการนำเสนอชุดรหัสเทียมจาก{\figref{fig:pseudocodeGrading} ในรูปของกราฟโปรแกรม 
-โดยที่{\Node}ที่ 2, 3, 6, 8, 9, 10, 11, 13, 17, 18 และ 19 คือ{\Node}ที่แสดงถึงลำดับการดำเนินงาน 
+ชุดรหัสเทียมจาก{\figref{fig:pseudocodeGrading} สามารถนำเสนอในลักษณะของ{\cfg} ดังแสดงใน{\figref{fig:programGraph}}  
+โดย{\Node}ที่ 2, 3, 6, 8, 9, 10, 11, 13, 17, 18 และ 19 คือ{\Node}ที่แสดงถึงลำดับการดำเนินงาน 
 และ{\Node} 4, 5, 6, 7, 12, 14 และ 16 เป็น{\FirstTimeDefine{\PredicateNode}{\PredicateNodeEN}} ภายในโปรแกรม 
 โดยมีโหนด 2 และ 19 เป็น{\sourcenode} และ{\sinknode} ตามลำดับ 
 
-จากโครงสร้าง{\sourcecode} ดัง{\figref{fig:pseudocodeGrading}} ทำให้เห็นได้ว่า {\tester}สามารถทำความเข้าใจโครงสร้างของ{\sourcecode} ได้ 
-ถึงแม้{\tester}จะไม่มีประสบการณ์กับภาษาที่ใช้พัฒนา หากแต่{\tester}สามารวิเคราะห์หากรณีทดสอบได้จาก{\cfg}ข้างต้น 
+จากโครงสร้าง{\sourcecode} ดัง{\figref{fig:pseudocodeGrading}} ทำให้เห็นได้ว่า 
+{\tester}สามารถทำความเข้าใจโครงสร้างของ{\sourcecode}ได้ 
+ถึงแม้จะไม่มีประสบการณ์กับภาษาที่ใช้พัฒนา แต่ก็สามารถวิเคราะห์หากรณีทดสอบได้จาก{\cfg}ข้างต้น 
 ด้วยการพิจารณา{\PredicateNode}ที่ปรากฏบน{\TestPath} ยกตัวอย่างเช่น 
-หากเลือก{\Path}จาก{\figref{fig:programGraph}} เป็น{\TestPath}ดังที่แสดงใน{\figref{fig:testpath}} จะพบว่ามี{\PredicateNode}บน{\TestPath} 3 {\Node} 
-ด้วยกัน นั่นคือ \code{4}, \code{5} และ \code{10} เมื่อพิจารณา{\PredicateNode}ทั้ง 3 {\Node}จะได้ข้อมูลทดสอบเป็น \code{bonus\_score = 1} และ 
-\code{student\_score = 50} ซึ่งข้อมูลทดสอบที่สร้างขึ้นนี้สามารถทำให้โปรแกรมทำงานใน{\TestPath}ได้ 
-ดังกรณีทดสอบใน\tabref{tab:simpleTestCase}
+หากเลือก{\Path}จาก{\figref{fig:programGraph}} เป็น{\TestPath}ดังที่แสดงใน{\figref{fig:testpath}} 
+จะพบว่ามี{\PredicateNode}บน{\TestPath} 3 {\Node} 
+ด้วยกัน นั่นคือ \code{4}, \code{5} และ \code{10} เมื่อพิจารณา{\PredicateNode}ทั้ง 3 {\Node}จะได้ข้อมูลทดสอบเป็น 
+\code{bonus\_score = 1} และ \code{student\_score = 50} ซึ่งข้อมูลทดสอบที่สร้างขึ้นนี้สามารถทำให้โปรแกรมทำงานใน{\TestPath}ได้ 
+ดังกรณีทดสอบทีสร้างจาก{\TestPath} ซึ่งแสดงใน\tabref{tab:simpleTestCase}
 
 \begin{figure}[ht!]
     \centering
@@ -113,16 +115,19 @@
 \subsubsection{\FirstTimeDefine{\scg}{\scgEN}}
 \label{sec:sub:sub:scg}
 
-การพัฒนา{\software}เชิงวัตุ (Object-oriented programming: OOP) เป็นการรวมพฤติกรรมและความสามารถที่คล้ายคลึงกันเข้าไว้ด้วยกัน \cite{kindler2011}
-ในลักษณะของ\FirstTimeDefine{\class}{\classEN} \FirstTimeDefine{\method}{\methodEN} และ \FirstTimeDefine{\attribute}{\attributeEN} 
+การพัฒนา{\software}เชิงวัตถุ (Object-oriented programming: OOP) เป็นการรวมพฤติกรรมและความสามารถที่คล้ายคลึงกันเข้าไว้ด้วยกัน 
+\cite{kindler2011}
+ในลักษณะของ\FirstTimeDefine{\class}{\classEN} \FirstTimeDefine{\method}{\methodEN} และ 
+\FirstTimeDefine{\attribute}{\attributeEN} 
 ดังนั้นหากต้องทำเข้าใจถึงการมีปฏิสัมพันธ์ระหว่าง{\class}ภายในซอฟต์แวร์ภายใต้การทดสอบ (Software under test: SUT) จาก{\sourcecode} 
-ที่ได้รับมานั้น{\scg}จึงเข้าช่วยแสดงความสัมพันธ์ในรูปแบบของ\FirstTimeDefine{\DirectedMultiGraph}{\DirectedMultiGraphEN}\ หากให้แทน{\software} \code{P} 
-แทนด้วยกราฟ \code{G} จึงสามารถเขียนความสัมพันธ์ในรูปของทูเปิ้ล 8 รายการ \code{G = (V, E, tail, head, \ell_V, \ell_E, \sigma, \delta)}
+ที่ได้รับมานั้น{\scg}จึงเข้าช่วยแสดงความสัมพันธ์ในรูปแบบของ\FirstTimeDefine{\DirectedMultiGraph}{\DirectedMultiGraphEN}
+หากให้{\software} \code{P} แทนด้วยกราฟ \code{G} สามารถเขียนความสัมพันธ์ในรูปของทูเปิ้ล 8 รายการ 
+\code{G = (V, E, tail, head, \ell_V, \ell_E, \sigma, \delta)}
 
 \begin{table}[ht!]
     \begin{tabular}{ll}
-        เมื่อ & \code{V} คือ เซตซึ่งมีสมาชิกจำกัดซึ่งเป็น{\Node}ภายในกราฟ \\
-            & \code{E} คือ เซตซึ่งมีสมาชิกจำกัดของ{\Edge} \\
+        เมื่อ & \code{V} คือ เซตของ{\Node}ภายในกราฟ ซึ่งมีสมาชิกจำกัด \\
+            & \code{E} คือ เซตของ{\Edge}ภายในกราฟ ซึ่งมีสมาชิกจำกัด \\
             & \code{tail:E \rightarrow V} คือ ฟังก์ชันซึ่งกำหนด{\Edge}ให้กับ{\Node}หาง (tail) \\
             & \code{head:E \rightarrow V} คือ ฟังก์ชันซึ่งกำหนด{\Edge}ให้กับ{\Node}หัว (head) \\
             & \code{\ell_V} คือ เซตของแผ่นป้ายกำกับที่แต่ละ{\Node} \\
@@ -173,7 +178,7 @@
 เพื่อทำให้โปรแกรมทำงานบนเส้นทางนั้นได้ \cite{Naik2008} หากพิจารณาจากชุดรหัสเทียมใน{\figref{fig:pseudocodeGrading}} 
 และกราฟใน\figref{fig:programGraph} ประกอบเข้าด้วยกัน จะพบว่าทางเดิน 
 \code{\overline{12}\ - 14\ - 15 - 18 - 19} คือ {\bf \InfeasiblePath} 
-ดังแสดงใน{\figref{fig:infeasiblePath}} เนื่องจากไม่สามารถหาค่าที่สอดคล้อง กับ\PredicateNode\ 12 และ 14 
+ดังแสดงใน{\figref{fig:infeasiblePath}} เนื่องจากไม่สามารถหาค่าที่สอดคล้องกับ\PredicateNode\ 12 และ 14 
 นั่นคือ \code{student\_score \geq 80} และ \code{student\_score = 0} ได้ในทุก ๆ กรณี
 
 \begin{figure}[hbt!]
@@ -184,5 +189,4 @@
 \end{figure}
 
 
-ดังนั้นการทดสอบโปรแกรมนั้นจึงจำเป็นจะต้องวิเคราะห์{\InfeasiblePath}ที่อยู่ภายในโครงสร้างของโปรแกรมเพื่อรายงานผลให้นักพัฒนาได้ทราบและแก้ไข
-ต่อไปได้
+ดังนั้นการทดสอบโปรแกรมนั้นจึงจำเป็นจะต้องวิเคราะห์{\InfeasiblePath}ที่อยู่ภายในโครงสร้างของโปรแกรมเพื่อรายงานผลให้นักพัฒนาได้ทราบและแก้ไขต่อไป
