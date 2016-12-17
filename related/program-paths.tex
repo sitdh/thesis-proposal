@@ -112,17 +112,18 @@
     \end{tabularx}
 \end{table}
 
+\newpage
 \subsubsection{\FirstTimeDefine{\scg}{\scgEN}}
 \label{sec:sub:sub:scg}
 
-การพัฒนา{\software}เชิงวัตถุ (Object-oriented programming: OOP) เป็นการรวมพฤติกรรมและความสามารถที่คล้ายคลึงกันเข้าไว้ด้วยกัน 
-\cite{kindler2011}
-ในลักษณะของ\FirstTimeDefine{\class}{\classEN} \FirstTimeDefine{\method}{\methodEN} และ 
+การพัฒนา{\software}เชิงวัตถุ (Object-oriented programming) เป็นการรวมพฤติกรรมและความสามารถที่คล้ายคลึงกันเข้าไว้ด้วยกัน 
+\cite{kindler2011} ในลักษณะของ\FirstTimeDefine{\class}{\classEN} \FirstTimeDefine{\method}{\methodEN} และ 
 \FirstTimeDefine{\attribute}{\attributeEN} 
-ดังนั้นหากต้องทำเข้าใจถึงการมีปฏิสัมพันธ์ระหว่าง{\class}ภายในซอฟต์แวร์ภายใต้การทดสอบ (Software under test: SUT) จาก{\sourcecode} 
-ที่ได้รับมานั้น{\scg}จึงเข้าช่วยแสดงความสัมพันธ์ในรูปแบบของ\FirstTimeDefine{\DirectedMultiGraph}{\DirectedMultiGraphEN}
+ดังนั้นหากต้องทำเข้าใจปฏิสัมพันธ์ระหว่าง{\class}ของ{\SUTEN} จาก{\sourcecode} ที่ได้รับมานั้น 
+{\scg}จึงเข้าช่วยแสดงความสัมพันธ์ในรูปแบบของ\FirstTimeDefine{\DirectedMultiGraph}{\DirectedMultiGraphEN}
 หากให้{\software} \code{P} แทนด้วยกราฟ \code{G} สามารถเขียนความสัมพันธ์ในรูปของทูเปิ้ล 8 รายการ 
-\code{G = (V, E, tail, head, \ell_V, \ell_E, \sigma, \delta)}
+\code{G = (V, E, tail, head, \ell_V, \ell_E, \sigma, \delta)} \code{V} คือ เซตของ{\Node}ภายในกราฟ ซึ่งมีสมาชิกจำกัด
+
 
 \begin{table}[ht!]
     \begin{tabular}{ll}
@@ -137,6 +138,7 @@
     \end{tabular}
 \end{table}
 
+\newpage
 \begin{figure}[htb!]
     \lstset{basicstyle=\small,style=thesiscodestyle,language=java}
     \lstinputlisting[language=Java]{related/SimpleQuiz.java}

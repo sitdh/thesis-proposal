@@ -39,14 +39,14 @@
     \item {\it ข้อมูลพื้นฐาน (Primitive data)} ซึ่งเป็นข้อมูลพื้นฐานที่ใช้งานภายใน{\class} ซึ่งในที่นี้จะสนใจข้อมูลพื้นฐาน 2 ประเภทได้แก่
         \begin{enumerate}
             \item {\bf ตัวอักษร} ซึ่งมีประเภทข้อมูลเป็น \code{String} ในภาษาจาวา
-            \item {\bf ตัวเลข} ซึ่งมีประเภทข้อมูล ได้แก่ \code{byte, short, int, long, float} และ\code{double} ในภาษาจาวา
+            \item {\bf ตัวเลข} ซึ่งมีประเภทข้อมูล ได้แก่ \code{byte, short, int, long, float} และ\,\code{double} ในภาษาจาวา
         \end{enumerate}
     \item {\it {\enum} (Enumeration)} ซึ่งมีประเภทข้อมูลเป็น \code{enum} ในภาษาจาวา
 \end{enumerate}
 
 ทั้งนี้จะไม่สนใจข้อมูลเชิงตรรกะ (มีชนิดข้อมูลเป็น \code{bool} ในภาษาจาวา) เนื่องจากว่าตัวเลือกที่เป็นไปได้นั้นมีเพียง 2 ตัวเลือกเท่านั้น
 นอกจากนั้นจะยังไม่สนใจข้อมูลจำเพาะ ที่กำหนดขึ้นมาใช้งานเอง 
-จาก{\sourcecode}ของ{\class} \code{SimpleBonusScore} และ\code{SimpleGrading} ดังที่แสดงใน 
+จาก{\sourcecode}ของ{\class} \code{SimpleBonusScore} และ\,\code{SimpleGrading} ดังที่แสดงใน 
 \figref{fig:javaBonusScore} และ \ref{fig:javaGrading} ตามลำดับ ในการดำเนินการวิจัยครั้งนี้ 
 จะจัดเก็บข้อมูลค่าคงที่ซึ่งอยู่ในบรรทัดที่ \code{6, 8, 9, 10, 11, 12, 15, 16, 17} และ \code{18} ของ{\class} \code{SimpleBonusScore}
 ตลอดจนค่าคงที่ซึ่งอยู่ในบรรทัดที่ \code{4, 5, 6, 8, 9} และ \code{10} ของ{\class} \code{SimpleGrading} 
@@ -60,7 +60,7 @@
 \subsubsection{\graphCreation}
 \label{sec:sub:sub:graphCreation}
 
-กระบวนการสร้างกราฟนั้นจะรับข้อมูล{\sourcecode}จาก{\Repository}ร่วมกับข้อมูลแพคเกจที่{\tester}สนใจมาประกอบกัน 
+1 กระบวนการสร้างกราฟนั้นจะรับข้อมูล{\sourcecode}จาก{\Repository}ร่วมกับข้อมูลแพคเกจที่{\tester}สนใจมาประกอบกัน 
 เพื่อใช้สร้างกราฟ โดยแบ่งออกเป็น 2 กระบวนการย่อยด้วยกัน 
 คือ การสร้าง{\scg} และการสร้าง{\cfg} โดยมีรายละเอียดดังต่อไปนี้
 
@@ -145,7 +145,7 @@
 
 \begin{figure}[h!]
     \includegraphics[width=\textwidth]{test-path-selection-call-reference}
-    \caption{โครงสร้างความสัมพันธ์ของ\class \code{SimpleGrading}, \code{SimpleBonusScore} และ\code{SimpleQuiz}}
+    \caption{\mbox{โครงสร้างความสัมพันธ์ของ\class\,\code{SimpleGrading},\,\code{SimpleBonusScore} และ\,\code{SimpleQuiz}}}
     \label{fig:callreferences}
 \end{figure}
 
