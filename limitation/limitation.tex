@@ -5,20 +5,20 @@
     \label{enu:limitation}
     \item สร้างกรณีทดสอบที่ครอบคลุม{\TestPath}ระหว่าง{\CUT} \label{enu:lim:tc}
     \item รองรับการเรียกใช้งานกันของ{\CUT}บน{\TestPath}สูงสุด 3 {\class} \label{enu:lim:3linkingclass}
-    \item รองรับจำนวน{\method}ภายใน{\CUT}สูงสุด{\class}ละไม่เกิน 5 {\method} \label{enu:lim:5methods}
+    \item รองรับ{\method}ภายใน{\CUT}สูงสุดไม่เกิน 5 {\method}ต่อ{\class} \label{enu:lim:5methods}
     % \item รองรับ{\class}ภาษาจาวาขนาดความยาวไม่เกิน 200 บรรทัดต่อ{\class} \label{enu:lim:200loc} 
         % http://softwareengineering.stackexchange.com/questions/66523/how-many-lines-per-class-is-too-many-in-java
     % \item รองรับ{\TestPath}ที่ปรากฎ{\PredicateNode}ตลอดทั้ง{\Path}ไม่เกิน 20 {\Node}  \label{enu:lim:20predicate}
     \item ข้อมูล{\scg}ที่สร้างขึ้นนั้นจะสนใจเฉพาะความสัมพันธ์ระหว่างคลาสที่อยู่ภายใน{\Package}จาวา (Java package) ตามที่ผู้ใช้ระบุ 
-        โดยละเว้นชุดพัฒนามาตรฐานของภาษาจาวาและชุดคำสั่งภายนอก \label{enu:lim:scg}
+        โดยยกเว้นชุดพัฒนามาตรฐานของภาษาจาวาและชุดคำสั่งภายนอก \label{enu:lim:scg}
     \item รองรับข้อมูลนำเข้าประเภทตัวอักษร (มีชนิดข้อมูลเป็น \code{String} ในภาษาจาวา) ตัวเลข 
         (มีชนิดข้อมูลเป็น \code{byte, short, int, long, float} และ \code{double} ในภาษาจาวา) และ{\enum} 
         (มีชนิดข้อมูลเป็น \code{enum} ในภาษาจาวา) ยังไม่รองรับประเภทข้อมูลเฉพาะที่สร้างขึ้นเอง \label{enu:lim:datatype}
     \item รองรับโปรแกรมประยุกต์ที่พัฒนาขึ้นเพื่อใช้งานบนเครื่องคอมพิวเตอร์ส่วนบุคคล และ{\sourcecode}พัฒนาขึ้นด้วยภาษาจาวา  \label{enu:lim:datatype}
         % โดยไม่รวมถึงโปรแกรมประยุกต์ประเภทเว็บแอปพลิเคชัน
     \item ครอบคลุมโปรแกรมที่ทำงานเป็นลำดับ (Sequential) ไม่ครอบคลุมการทำงานของโปรแกรมที่ทำงานเป็นภาวะพร้อมกัน (Parallel) \label{enu:lim:seq}
-    \item รองรับเฉพาะโปรแกรมที่มีจำนวนของไซโคลเมทิกภายในคลาสรวมกันแล้วน้อยกว่าหรือเท่ากับ 15
+    \item รองรับเฉพาะโปรแกรมที่มีจำนวนของไซโคลเมทิกภายในคลาสรวมกันน้อยกว่าหรือเท่ากับ 15
     \item รองรับการสร้างกรณีทดสอบที่สอดคล้องตามรูปแบบของชุดพัฒนา JUnit
-    \item รองรับการดำเนินงานแบบวงวน (Loop) มากที่สุด 1 รอบ \label{enu:lim:loop}
+    \item รองรับการดำเนินงานแบบวงวน (Loop) 1 รอบ \label{enu:lim:loop}
     \item ไม่รองรับการเรียกใช้ฟังก์ชันเวียนบังเกิด (Recursion)
 \end{enumerate}
