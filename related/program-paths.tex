@@ -7,7 +7,7 @@
 และจาก{\sourcecode}โดยตรง ซึ่งการทำความเข้าใจโครงสร้างผ่าน{\sourcecode}โดยตรงนั้นย่อมสะท้อนลักษณะของ{\software}ที่เป็นปัจจุบันมากที่สุด
 {\ProgramGraph} จึงเป็นวิธีการนำเสนอโครงสร้างการทำงานที่ปรากฏอยู่ภายใน{\software} ณ ขณะที่สนใจ 
 ช่วยให้{\tester}เข้าใจโครงสร้างของ{\software} และออกแบบกรณีทดสอบได้มีประสิทธิภาพมากยิ่งขึ้น 
-ซึ่งในงานวิจัยนี้จะนำ{\ProgramGraph}มาใช้ 2 ประเภท ด้วยกัน ได้แก่ \cfg และ \scg
+ซึ่งในงานวิจัยนี้จะนำ{\ProgramGraph}มาใช้ 2 ประเภท ได้แก่ \cfg และ \scg
 
 \subsubsection{\FirstTimeDefine{\cfg}{\cfgen}}
 \label{sec:sub:sub:cfg}
@@ -83,16 +83,16 @@
 จากโครงสร้าง{\sourcecode} ดัง{\figref{fig:pseudocodeGrading}} ทำให้เห็นได้ว่า 
 {\tester}สามารถทำความเข้าใจโครงสร้างของ{\sourcecode}ได้ 
 ถึงแม้จะไม่มีประสบการณ์กับภาษาที่ใช้พัฒนา แต่ก็สามารถวิเคราะห์หากรณีทดสอบได้จาก{\cfg}ข้างต้น 
-ด้วยการพิจารณา{\PredicateNode}ที่ปรากฏบน{\TestPath} ยกตัวอย่างเช่น 
+ด้วยการพิจารณา{\PredicateNode}ที่ปรากฏบน{\TestPath} เช่น 
 หากเลือก{\Path}จาก{\figref{fig:programGraph}} เป็น{\TestPath}ดังที่แสดงใน{\figref{fig:testpath}} 
 จะพบว่ามี{\PredicateNode}บน{\TestPath} 3 {\Node} 
-ด้วยกัน นั่นคือ \code{4}, \code{5} และ \code{10} เมื่อพิจารณา{\PredicateNode}ทั้ง 3 {\Node}จะได้ข้อมูลทดสอบเป็น 
+ด้วยกัน นั่นคือ \code{4}, \code{5} และ \code{12} เมื่อพิจารณา{\PredicateNode}ทั้ง 3 {\Node}จะได้ข้อมูลทดสอบเป็น 
 \code{bonus\_score = 1} และ \code{student\_score = 50} ซึ่งข้อมูลทดสอบที่สร้างขึ้นนี้สามารถทำให้โปรแกรมทำงานใน{\TestPath}ได้ 
 ดังกรณีทดสอบทีสร้างจาก{\TestPath} ซึ่งแสดงใน\tabref{tab:simpleTestCase}
 
 \begin{figure}[ht!]
     \centering
-    \code{2\ - 3\ - (4)\ - (5)\ - 6\ - 10\ - 11\ - (12)\ - 13\ - 18 - 19}
+    \code{2\ - 3\ - 4\ - 5\ - 6\ - 10\ - 11\ - 12\ - 13\ - 18 - 19}
     \caption{ตัวอย่าง{\TestPath}สำหรับโปรแกรมคำนวณเกรด}
     \label{fig:testpath}
 \end{figure}
@@ -142,21 +142,21 @@
 \begin{figure}[htb!]
     \lstset{basicstyle=\small,style=thesiscodestyle,language=java}
     \lstinputlisting[language=Java]{related/SimpleQuiz.java}
-    \caption{{\sourcecode}ภาษาจาวาสำหรับอ่านคะแนนคำถามภายในชั้นเรียน}
+    \caption{{\sourcecode}ภาษาจาวาสำหรับอ่านคะแนนคำถามภายในชั้นเรียน (\code{SimpleQuiz})}
     \label{fig:javaQuiz}
 \end{figure}
 
 \begin{figure}[htb!]
     \lstset{basicstyle=\small,style=thesiscodestyle,language=java}
     \lstinputlisting[language=Java]{related/SimpleBonusScore.java}
-    \caption{{\sourcecode}ภาษาจาวาสำหรับคำนวนคะแนนเพิ่มพิเศษ}
+    \caption{{\sourcecode}ภาษาจาวาสำหรับคำนวนคะแนนเพิ่มพิเศษ (\code{SimpleBonusScore})}
     \label{fig:javaBonusScore}
 \end{figure}
 
 \begin{figure}[htb!]
     \lstset{basicstyle=\small,style=thesiscodestyle}
     \lstinputlisting[language=Java]{related/SimpleGrading.java}
-    \caption{{\sourcecode}ภาษาจาวาสำหรับคำนวณเกรดนิสิต}
+    \caption{{\sourcecode}ภาษาจาวาสำหรับคำนวณเกรดนิสิต (\code{SimpleGrading})}
     \label{fig:javaGrading}
 \end{figure}
 
