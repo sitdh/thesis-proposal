@@ -176,12 +176,12 @@
 ซึ่งมีเงื่อนไขดังนี้
 
 \begin{enumerate}
-    \item[\code{G:19}] \code{student\_score < SCORE\_MINIMUM\_STATISFIED} \label{itm:studentscore}
+    \item[\code{G:19}] \code{student\_score < SCORE\_MINIMUM\_SATISFIED} \label{itm:studentscore}
     \item[\code{S:8}]  \code{bonus\_score > 0} \label{itm:studentid}
 \end{enumerate}
 
-โดยในขั้นตอนนี้จะนำค่าคงที่ที่เก็บไว้ในขั้นตอน {\bf \constantExtracting}} มาแทนในตัวแปร \code{SCORE\_MINIMUM\_STATISFIED} 
-(\code{SCORE\_MINIMUM\_STATISFIED} มีค่าเท่ากับ \code{80}) แล้วจึงพิจารณาข้อมูลทดสอบจากเงื่อนไขข้างต้น
+โดยในขั้นตอนนี้จะนำค่าคงที่ที่เก็บไว้ในขั้นตอน {\bf \constantExtracting}} มาแทนในตัวแปร \code{SCORE\_MINIMUM\_SATISFIED} 
+(\code{SCORE\_MINIMUM\_SATISFIED} มีค่าเท่ากับ \code{80}) แล้วจึงพิจารณาข้อมูลทดสอบจากเงื่อนไขข้างต้น
 เพื่อสร้างกรณีทดสอบและข้อมูลทดสอบที่เข้าทดสอบ{\TestPath}ตามที่เลือกได้ โดยที่ข้อมูลที่สร้างขึ้นนั้นจะต้องทำให้เงื่อนไข 
 \code{G:19} เป็นจริง (\code{True}) และเงื่อนไข \code{S:8} เป็นเท็จ (\code{False})
 
