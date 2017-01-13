@@ -3,7 +3,7 @@
 
 \begin{enumerate}
     \label{enu:limitation}
-    \item สร้างกรณีทดสอบที่ครอบคลุม{\TestPath}ระหว่าง{\CUT} \label{enu:lim:tc}
+    \item สร้างกรณีทดสอบที่ครอบคลุมกิ่งทั้งหมดของ{\scg} (Branch coverage) ที่สร้างขึ้นจาก{\StaticInformation}ของ{\SUT} \label{enu:lim:branchcoverage}
     % \item รองรับการเรียกใช้งานกันของ{\CUT}บน{\TestPath}สูงสุด 3 {\class} \label{enu:lim:3linkingclass}
     % \item รองรับ{\method}ภายใน{\CUT}สูงสุดไม่เกิน 5 {\method}ต่อ{\class} \label{enu:lim:5methods}
     % \item รองรับ{\class}ภาษาจาวาขนาดความยาวไม่เกิน 200 บรรทัดต่อ{\class} \label{enu:lim:200loc} 
@@ -19,6 +19,6 @@
     \item ครอบคลุมโปรแกรมที่ทำงานเป็นลำดับ (Sequential) ไม่ครอบคลุมการทำงานของโปรแกรมที่ทำงานเป็นภาวะพร้อมกัน (Parallel) \label{enu:lim:seq}
     \item รองรับเฉพาะโปรแกรมที่มีจำนวนของไซโคลเมทิกภายในคลาสรวมกันน้อยกว่าหรือเท่ากับ 15
     \item รองรับการสร้างกรณีทดสอบที่สอดคล้องตามรูปแบบของชุดพัฒนา JUnit
-    \item รองรับการดำเนินงานแบบวงวน (Loop) 1 รอบ \label{enu:lim:loop}
+    \item รองรับการดำเนินงานแบบวงวน (Loop) 1 รอบ บนเส้นทางทดสอบ\label{enu:lim:loop}
     \item ไม่รองรับการเรียกใช้ฟังก์ชันเวียนเกิด (Recursion)
 \end{enumerate}
